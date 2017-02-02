@@ -1,4 +1,4 @@
-# sistop-2017-2
+# sistop-2017-2 #
 
 ¡Bienvenido!
 
@@ -14,7 +14,7 @@ es http://sistop.org/
 Los alumnos utilizarán este espacio para enviar sus prácticas, tareas,
 proyectos, exposiciones, etc..
 
-## ¿Qué es Git y cómo se usa?
+## ¿Qué es Git y cómo se usa? ##
 
 La razón para utilizar un árbol *Git* es que se vayan familiarizando
 con las principales herramientas de colaboración para el desarrollo de
@@ -56,7 +56,7 @@ pero al mismo tiempo me resulta importante iniciarlos en el uso de esta
 importante herramienta de desarrollo colaborativo, así como su interacción
 en tanto red social.
 
-## ¿Cómo lo usaremos en la materia?
+## ¿Cómo lo usaremos en la materia? ##
 
 1. Todos los alumnos deben tener una cuenta en GitHub.
 2. Siempre que el profesor anuncie una tarea en clase, creará un
@@ -68,11 +68,24 @@ en tanto red social.
        integrantes del equipo!
     2. Pueden también crear un *fork* y trabajar colaborativamente en éste
        entre varios.
-4. ¡Registren el desarrollo de su proyecto! En todas las entregas no
+4. Para todas las entregas, usa el esquema de nombre estandarizado que
+   presentamos en la
+   [sección 4 de la práctica 1](https://github.com/gwolf/sistop-2017-2/tree/master/practicas/1/README.md):
+   
+       `[tipo_entrega]/[numero]/[ApellidoNombre]/`
+    * Esto es, por ejemplo, si voy a entregar la primera práctica,
+      lo hago en el directorio `tareas/1/WolfGunnar`
+    * Si estamos resolviendo algo en equipo, el directorio se crea con
+      los nombres de ambos integrantes en órden alfabético, separado
+      por guiones: Si el segundo proyecto lo hago con Abraham Álvarez,
+      el directorio de entrega será
+      `proyectos/2/AlvarezAbraham-WolfGunnar`
+5. ¡Registren el desarrollo de su proyecto! En todas las entregas no
    triviales, se calificará el que haya un *avance visible*, reflejado
    en varios *commits*.
     1. Ojo, importa que los mensajes en la bitácora resuman el trabajo
        realizado a cada paso.
-5. Cuando estén contantos con el desarrollo, hagan un *pull
+6. Cuando estén contantos con el desarrollo, hagan un *pull
    request*. Eso (y únicamente eso) contará como una entrega de
    trabajo.
+
