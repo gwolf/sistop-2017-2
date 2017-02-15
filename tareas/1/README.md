@@ -24,6 +24,10 @@ similar a lo que demostré en clase. Esto es:
   grande. Hagan una revisión rápida a ojo para buscar una región
   interesante, y elijan unas _25 llamadas consecutivas_ en que se
   quieran enfocar
+    - _Ojo:_ No hace falta que detallen las 25 llamadas una tras
+      otra. Si tenemos grupos de llamadas relacionadas, ahórrense el
+      describir a cada una de ellas. Hay llamadas obvias y aburridas,
+      como `close` o `munmap` que no requieren profundizar.
 - Expliquen qué comprenden o qué intuyen de esa porción de la
   ejecución.
     - ¿Línea por línea? ¿Explicando grupos de llamadas? De ustedes
