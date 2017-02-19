@@ -7,3 +7,4 @@ materia.
 Por navegabilidad, generaré un archivo de referencias por cada "gran tema".
 
 1. [Introducción](./1.introduccion.md)
+2. [Relación con el hardware: Estructuras y funciones básicas](./2.relacion_con_el_hardware.md)
