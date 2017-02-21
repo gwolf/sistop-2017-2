@@ -2,6 +2,7 @@
 
     #include <stdlib.h>
     #include <stdio.h>
+	#include <unistd.h>
 
 #elif _WIN32    /* _Win32 is usually defined by compilers targeting 32 or   64 bit Windows systems */
 
