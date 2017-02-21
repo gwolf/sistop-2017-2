@@ -1,0 +1,56 @@
+*Sistema operativo: Linux/Debian
+*Programa empleado: strace
+*Programa objetivo: host, escogi este programa porque tengo curiosodad por el funcionamiento de las redes y queria saber si el modo en el que opera LÑinux es similar al de Windows en algunos aspectos
+
+*Observaciones: Al parecer Linux realiza su trabajo un tantodistinto a windows, en este caso uso como objetivo de host el dominio de www.google.com.mx y una gran diferencia es que Linux realiza mas revisiones de seguridad y certificados que Windows
+
+*Traza de la ejecucion:
+
+-clone(child_stack=0x7fd98b422fb0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|-CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID|--CLONE_CHILD_CLEARTID, parent_tidptr=0x7fd98b4239d0, tls=0x7fd98b423700, child_tidptr=0x7fd98b4239d0) = 3632
+//Clona los procesos para que se ejecuten en el mismo espacio de memoria
+
+-brk(0x55bf0120c000)                     = 0x55bf0120c000
+//Define el fin del segento de datos del proceso
+
+-pipe([3, 4])                            = 0
+//Crea un canal para el proceso de comunicacion
+
+-fcntl(3, F_GETFL)                       = 0 (flags O_RDONLY)
+-fcntl(3, F_SETFL, O_RDONLY|O_NONBLOCK)  = 0
+//Obtiene y establece las banderas del sistema
+
+-epoll_create(64)                        = 5
+-epoll_ctl(5, EPOLL_CTL_ADD, 3, {EPOLLIN, {u32=3, u64=3}}) = 0
+//Llamadas del sitema que verifican si es posible la entrada/salida
+
+-mmap(NULL, 8392704, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_STACK,1, 0) = 0x7fd98a422000
+-mprotect(0x7fd98a422000, 4096, PROT_NONE) = 0
+//Mapea la red y revisa el acceso a ella
+
+-clone(child_stack=0x7fd98ac21fb0, flags=CLONE_VM|CLONE_FS|CLONE_FILES|-CLONE_SIGHAND|CLONE_THREAD|CLONE_SYSVSEM|CLONE_SETTLS|CLONE_PARENT_SETTID-CLONE_CHILD_CLEARTID,  parent_tidptr=0x7fd98ac229d0, tls=0x7fd98ac22700, -child_tidptr=0x7fd98ac229d0) = 3633
+//nuevamente clona los procesos
+
+-open("/usr/share/locale/es_MX.UTF-8/libdst.cat", O_RDONLY) = -1 ENOENT (No such -file or directory)
+-open("/usr/share/locale/es_MX.UTF-8/LC_MESSAGES/libdst.cat", O_RDONLY) = -1 -ENOENT (No such file or directory)
+-open("/usr/share/locale/es/libdst.cat", O_RDONLY) = -1 ENOENT (No such file or -directory)
+-open("/usr/share/locale/es/LC_MESSAGES/libdst.cat", O_RDONLY) = -1 ENOENT (No -such file or directory)
+//accede a la ruta del idioma local de la maquina e intenta resolver el DNS
+
+-futex(0x7fd99156db20, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+-futex(0x7fd99156db24, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+//Espera que un proceso provado devuelva verdadero
+
+-brk(0x55bf0122d000)                     = 0x55bf0122d000
+-open("/usr/lib/ssl/openssl.cnf", O_RDONLY) = 6
+//Revisa la seguridad de la conexion
+
+-fstat(6, {st_mode=S_IFREG|0644, st_size=10835, ...}) = 0
+//Devuelve informacion de un archivo
+
+-read(6, "#\n# OpenSSL example configuratio"..., 4096) = 4096
+-read(6, "Netscape crash on BMPStrings or "..., 4096) = 4096
+-read(6, " this to avoid interpreting an e"..., 4096) = 2643
+-read(6, "", 4096)                       = 0
+//Prueba la configuracion de la red
+
+-close(6)  
