@@ -1,0 +1,41 @@
+richardohg@richard:~/sistop-2017-2/tareas/1/HernandezRicardo$ strace cat
+
+execve("/bin/cat", ["cat"], [/* 62 vars */]) = 0
+brk(NULL)                               = 0x22f7000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f99e1ba5000
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+open("/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=87106, ...}) = 0
+mmap(NULL, 87106, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7f99e1b8f000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+open("/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0P\t\2\0\0\0\0\0"..., 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=1864888, ...}) = 0
+mmap(NULL, 3967392, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7f99e15b9000
+mprotect(0x7f99e1778000, 2097152, PROT_NONE) = 0
+mmap(0x7f99e1978000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1bf000) = 0x7f99e1978000
+mmap(0x7f99e197e000, 14752, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7f99e197e000
+close(3)                                = 0
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f99e1b8e000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f99e1b8d000
+mmap(NULL, 4096, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7f99e1b8c000
+arch_prctl(ARCH_SET_FS, 0x7f99e1b8d700) = 0
+mprotect(0x7f99e1978000, 16384, PROT_READ) = 0
+mprotect(0x60b000, 4096, PROT_READ)     = 0
+mprotect(0x7f99e1ba7000, 4096, PROT_READ) = 0
+munmap(0x7f99e1b8f000, 87106)           = 0
+
+
+execve -> ejecuta el programa, entra a la carpeta bin y ejecuta el comando cat.
+brk -> cambia el tamaño del segmento de datos, 
+access -> checa los permisos del usuario para un archivo, supongo que pregunta si puede ejecutar el comando.
+mmap -> hace un mapeo de la memoria en la dirección que especifíque el kernel, se sabe esto porque en el primer argumento viene NULL.
+fstat -> obtiene el estado de un archivo, regresa información acerca de él.
+open -> abre el archivo y depués lo lee con "red".
+mprotect ->protege una region de la memoria en caso de que si la llamada al proceso intenta acceder a la memoria de una manera que pueda violar la protección.
+arch_prctl -> establece la arquitectura especifica del estado de un hilo 
+
+A mí entender, primero ejecuta el comando, después pregunta si puede ser ejecutado, posteriormente  hace un mapeo para buscar el comando, luego accede a esa parte de memoria, la abre y la lee, regresa lo que tenga, luego lo cierra. Después pregunta si se puede "ejecutar", lo abre nuevamente y lee lo que tiene, obtiene lo que lleva dentro. Posteriormente vuelve a mapear y pregunta si no está violando la proteccion, después mapea varias veces y llega por fin a establecer lo que buscó.
+
