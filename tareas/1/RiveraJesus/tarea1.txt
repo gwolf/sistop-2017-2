@@ -1,0 +1,54 @@
+###Sistema Operativo: Linux/Ubuntu
+###Programa Empleado: strace
+###Programa Objetivo: ping, escogí este comando para lograr saber que llamadas al sistema van de la mano de un ping.
+
+###Traza de la ejecución:
+
+socket(PF_INET, SOCK_DGRAM, IPPROTO_IP) = 4
+connect(4, {sa_family=AF_INET, sin_port=htons(1025), sin_addr=inet_addr("192.168.0.1")}, 16) = 0
+getsockname(4, {sa_family=AF_INET, sin_port=htons(35660), sin_addr=inet_addr("192.168.0.9")}, [16]) = 0
+close(4)                                = 0
+//Se indica la version de protocolo de internet versión 4
+//La direccion a la que se hará el ping 
+
+setsockopt(3, SOL_RAW, ICMP_FILTER, ~(ICMP_ECHOREPLY|ICMP_DEST_UNREACH|ICMP_SOURCE_QUENCH|ICMP_REDIRECT|ICMP_TIME_EXCEEDED|ICMP_PARAMETERPROB), 4) = 0
+setsockopt(3, SOL_IP, IP_RECVERR, [1], 4) = 0
+setsockopt(3, SOL_SOCKET, SO_SNDBUF, [324], 4) = 0
+setsockopt(3, SOL_SOCKET, SO_RCVBUF, [65536], 4) = 0
+getsockopt(3, SOL_SOCKET, SO_RCVBUF, [131072], [4]) = 0
+//Pone opciones de conexion,
+//pone una opcion de envío de buffer,
+//inmediatamente después recibe el buffer y analiza el resultado
+ 
+fstat(1, {st_mode=S_IFCHR|0620, st_rdev=makedev(136, 1), ...}) = 0
+// obtine el estado del archivo enviado y recibido
+
+write(1, "PING 192.168.0.1 (192.168.0.1) 5"..., 53PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+) = 53
+setsockopt(3, SOL_SOCKET, SO_TIMESTAMP, [1], 4) = 0
+setsockopt(3, SOL_SOCKET, SO_SNDTIMEO, "\1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+setsockopt(3, SOL_SOCKET, SO_RCVTIMEO, "\1\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+//Pone las opciones para verificar el tiempo de envio y recibida.
+
+getpid()                                = 2457
+rt_sigaction(SIGINT, {0x4043c0, [], SA_RESTORER|SA_INTERRUPT, 0x7f953fa594a0}, NULL, 8) = 0
+rt_sigaction(SIGALRM, {0x4043c0, [], SA_RESTORER|SA_INTERRUPT, 0x7f953fa594a0}, NULL, 8) = 0
+rt_sigaction(SIGQUIT, {0x4043b0, [], SA_RESTORER|SA_INTERRUPT, 0x7f953fa594a0}, NULL, 8) = 0
+rt_sigprocmask(SIG_SETMASK, [], NULL, 8) = 0
+//se cambian la accion tomada al recibir una señal
+
+gettimeofday({1487740041, 904592}, NULL) = 0
+ioctl(1, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+ioctl(1, TIOCGWINSZ, {ws_row=42, ws_col=143, ws_xpixel=0, ws_ypixel=0}) = 0
+gettimeofday({1487740041, 904642}, NULL) = 0
+gettimeofday({1487740041, 904658}, NULL) = 0
+//prepar la medicion del tomado por el envio de paquetes
+
+sendmsg(3, {msg_name(16)={sa_family=AF_INET, sin_port=htons(0), sin_addr=inet_addr("192.168.0.1")}, msg_iov(1)=[{"\10\0\31P\t\231\0\1\211\34\255X\0\0\0\0\322\315\r\0\0\0\0\0\20\21\22\23\24\25\26\27"..., 64}], msg_controllen=0, msg_flags=0}, 0) = 64
+setitimer(ITIMER_REAL, {it_interval={0, 0}, it_value={10, 0}}, NULL) = 0
+//Envia el mensaje por medio del socket a la direccion puesta anteriormente
+//Define el intervalo de tiempo
+
+###Observaciones:
+La mayor parte de este programa son llamadas al sistema y principalmente son definiciones de sockets junto con 
+opciones para la conexion y toma de tiempo. Las cosas que no son vistas aqui serían cosas como el paquete que se envía.
