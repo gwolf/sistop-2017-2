@@ -1,0 +1,35 @@
+sistema operativo utilizado: linux devian
+programa empleado: como es linux se utilizo "strace"
+programa trazado: dolphin "gestor de archivos"
+¿por que se trazo este programa? traze este programa por que abre y cierra archivos entra y sale muchas veces para sacar la informacion de estos en las localidades de memoria correspondientes
+
+stat("/root/.local/share/fonts", 0x7ffc9cc479a0) = -1 ENOENT (No such file or directory) //entra a la localidad de memoria de la rama local fonts
+stat("/root/.local/share/fonts", 0x7ffc9cc47a10) = -1 ENOENT (No such file or directory) //encuentra el final de la localidad de memoria de la rama local fonts
+stat("/root/.fonts", 0x7ffc9cc479a0)    = -1 ENOENT (No such file or directory) //encuentra la locaclidad de memoria de fonts
+stat("/root/.fonts", 0x7ffc9cc47a10)    = -1 ENOENT (No such file or directory) //encuentra la localidad de memoria final de fonts
+stat("/usr/share/fonts/X11", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 // en cuentra la localidad de memoria de share fonts
+open("/usr/share/fonts/X11", O_RDONLY|O_CLOEXEC) = 6 // encuentra la localidad de memoria final de share fonts
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 //abre el primer paquete de archivos contenidos dentro de las localidades encontradas anteriormente                               = 0
+
+open("/var/cache/fontconfig//c855463f699352c367813e37f3f70ea7-le64.cache-4", O_RDONLY|O_CLOEXEC) = 6 // abre una locallidad para lectura 
+fstat(6, {st_mode=S_IFREG|0644, st_size=336, ...}) = 0 // detiene la informacion para leerla
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 //copia de todas los pquetes de una sola vez
+read(6, "\4\374\2\374\4\0\0\0P\1\0\0\0\0\0\0008\0\0\0\0\0\0\0P\0\0\0\0\0\0\0"..., 336) = 336  //lee todos y manda una notificaion de error si es que hubo algun apara lectura
+                               = 0
+stat("/usr/share/fonts/cmap", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 // detiene para copia las localidades de memoria todas las ramas conetenidas en cmap
+open("/usr/share/fonts/cmap", O_RDONLY|O_CLOEXEC) = 6 //abre las carpetas dentro de cmap
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 // encuentra la localidad de memoria exacta de cada uno de los archivos
+                                
+open("/var/cache/fontconfig//57e423e26b20ab21d0f2f29c145174c3-le64.cache-4", O_RDONLY|O_CLOEXEC) = 6 // abre los archivos para lectura
+fstat(6, {st_mode=S_IFREG|0644, st_size=328, ...}) = 0 // detiene los archivos para copia
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 // encuentra la localidad de memoria exacta de cada uno de los archivos
+read(6, "\4\374\2\374\4\0\0\0H\1\0\0\0\0\0\0008\0\0\0\0\0\0\0P\0\0\0\0\0\0\0"..., 328) = 328 // lee todos los archivos y manda si tienen error de lectura
+                              = 0
+stat("/usr/share/fonts/truetype", {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0 // encuentra la localidad de memoria donde se encuentran los front truetype
+open("/usr/share/fonts/truetype", O_RDONLY|O_CLOEXEC) = 6 // encuentra la localidad de memoria final de fronts truetype
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 // encuentra la localidad de memoria exacta de cada uno de los archivos
+
+open("/var/cache/fontconfig//7ef2298fde41cc6eeb7af42e48b7d293-le64.cache-4", O_RDONLY|O_CLOEXEC) = 6 // abre los archivos para lectura
+fstat(6, {st_mode=S_IFREG|0644, st_size=432, ...}) = 0 // encuentra localidad de memoria de los archivos por abrir
+fstatfs(6, {f_type="EXT2_SUPER_MAGIC", f_bsize=4096, f_blocks=25865026, f_bfree=24828589, f_bavail=23508961, f_files=6578176, f_ffree=6457327, f_fsid={-200807029, -745051512}, f_namelen=255, f_frsize=4096}) = 0 // encuentra la localidad de memoria exacta de cada uno de los archivos
+read(6, "\4\374\2\374\4\0\0\0\260\1\0\0\0\0\0\0008\0\0\0\0\0\0\0X\0\0\0\0\0\0\0"..., 432) = 432 // lee todos los archivos y manda un error de lectura en caso de activarse
