@@ -1,0 +1,117 @@
+Dr. Memory version 1.11.0 build 2 built on Aug 29 2016 02:42:07
+Dr. Memory errors that are likely to be false positives, for pid 2456: "wow.exe"
+These errors matched the blacklist 'C:\WINDOWS*.d??' for 4 frames.
+Run with -lib_blacklist_frames 0 to treat these as regular errors.
+If these are all false positives and your focus is unaddressable errors, consider running with -light to skip all uninitialized reads and leaks for higher performance.
+
+Potential Error #1: HANDLE LEAK: KERNEL handle 0x000002d4 and 31 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x0041b410 <wow.exe+0x6b410>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #2: HANDLE LEAK: KERNEL handle 0x000002ec and 0 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x0041a6b4 <wow.exe+0x6a6b4>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #3: HANDLE LEAK: KERNEL handle 0x000002f0 and 0 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x0041a6ce <wow.exe+0x6a6ce>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #4: HANDLE LEAK: KERNEL handle 0x00000360 and 1 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x0041b3d1 <wow.exe+0x6b3d1>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #5: HANDLE LEAK: KERNEL handle 0x00000368 and 0 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x005b01be <wow.exe+0x2001be>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #6: HANDLE LEAK: KERNEL handle 0x0000036c and 0 similar handle(s) were opened but not closed:
+# 0 system call NtCreateMutant
+# 1 KERNELBASE.dll!CreateMutexExW           +0xca     (0x7739b8fb <KERNELBASE.dll+0xcb8fb>)
+# 2 KERNELBASE.dll!CreateMutexW             +0x1c     (0x7739b38d <KERNELBASE.dll+0xcb38d>)
+# 3 wow.exe!?                               +0x0      (0x0057b58f <wow.exe+0x1cb58f>)
+# 4 wow.exe!?                               +0x0      (0x0057b49a <wow.exe+0x1cb49a>)
+# 5 wow.exe!?                               +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 6 wow.exe!?                               +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 7 KERNEL32.dll!BaseThreadInitThunk        +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.591 in thread 9316
+
+Potential Error #7: HANDLE LEAK: KERNEL handle 0x00000370 and 0 similar handle(s) were opened but not closed:
+# 0 system call NtCreateEvent
+# 1 KERNELBASE.dll!CreateEventExW          +0x5b     (0x7739b59c <KERNELBASE.dll+0xcb59c>)
+# 2 KERNELBASE.dll!CreateEventExA          +0x23     (0x7739b504 <KERNELBASE.dll+0xcb504>)
+# 3 KERNELBASE.dll!CreateEventA            +0x23     (0x7739b4c4 <KERNELBASE.dll+0xcb4c4>)
+# 4 wow.exe!?                              +0x0      (0x0057b483 <wow.exe+0x1cb483>)
+# 5 wow.exe!?                              +0x0      (0x004218ed <wow.exe+0x718ed>)
+# 6 wow.exe!?                              +0x0      (0x00b10af8 <wow.exe+0x760af8>)
+# 7 wow.exe!?                              +0x0      (0x00b10f5f <wow.exe+0x760f5f>)
+# 8 KERNEL32.dll!BaseThreadInitThunk       +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.592 in thread 9316
+
+Potential Error #8: HANDLE LEAK: KERNEL handle 0x00002394 and 0 similar handle(s) were opened but not closed:
+# 0 system call NtOpenKey       
+# 1 KERNEL32.dll!WerRegisterMemoryBlockWorker +0x8e6    (0x76729707 <KERNEL32.dll+0x19707>)
+# 2 KERNEL32.dll!WerSetFlags                  +0x306    (0x767285a7 <KERNEL32.dll+0x185a7>)
+# 3 KERNEL32.dll!BasepQueryAppCompat          +0x11e    (0x767281ef <KERNEL32.dll+0x181ef>)
+# 4 KERNELBASE.dll!CreateProcessInternalW     +0x1d17   (0x773a7dc8 <KERNELBASE.dll+0xd7dc8>)
+# 5 KERNELBASE.dll!CreateProcessW             +0x2b     (0x773a609c <KERNELBASE.dll+0xd609c>)
+# 6 wow.exe!?                                 +0x0      (0x00579cde <wow.exe+0x1c9cde>)
+# 7 wow.exe!?                                 +0x0      (0x0043e18e <wow.exe+0x8e18e>)
+# 8 wow.exe!?                                 +0x0      (0x0043e2a1 <wow.exe+0x8e2a1>)
+# 9 wow.exe!?                                 +0x0      (0x00b10f7e <wow.exe+0x760f7e>)
+#10 KERNEL32.dll!BaseThreadInitThunk          +0x23     (0x767262c4 <KERNEL32.dll+0x162c4>)
+Note: @0:00:04.594 in thread 9316
+
+DUPLICATE POTENTIAL ERROR COUNTS:
+	Potential Error #   1:     32
+	Potential Error #   4:      2
+
+POTENTIAL ERRORS FOUND:
+      0 unique,     0 total potential unaddressable access(es)
+      0 unique,     0 total potential uninitialized access(es)
+      0 unique,     0 total potential invalid heap argument(s)
+      0 unique,     0 total potential GDI usage error(s)
+      8 unique,    40 total potential handle leak(s)
+      0 unique,     0 total potential warning(s)
+      0 unique,     0 total,      0 byte(s) of potential leak(s)
+      0 unique,     0 total,      0 byte(s) of potential possible leak(s)
+Details: C:\Users\Octavio\AppData\Roaming\Dr. Memory\DrMemory-wow.exe.2456.000\potential_errors.txt
