@@ -89,3 +89,18 @@ en tanto red social.
    request*. Eso (y únicamente eso) contará como una entrega de
    trabajo.
 
+-----
+
+## Licenciamiento ##
+
+El planteamiento de tareas, ejercicios y actividades que forman parte
+de este repositorio, así como sus resoluciones, están amparadas por la
+licencia _Creative Commons Attribution 4.0 International_
+([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)).
+
+![CC BY 4.0](./CCBY4.0_88x31.png "CC BY 4.0")
+
+Puedes [consultar el texto completo de la licencia](./COPYING.html).
+
+La originalidad y autoría de cada elemento contenido en el repositorio
+es responsabilidad de quien lo registró (alumno o profesor).
