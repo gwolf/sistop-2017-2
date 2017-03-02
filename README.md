@@ -100,7 +100,7 @@ licencia _Creative Commons Attribution 4.0 International_
 
 ![CC BY 4.0](./CCBY4.0_88x31.png "CC BY 4.0")
 
-Puedes [consultar el texto completo de la licencia](./COPYING.html).
+Puedes [consultar el texto completo de la licencia](./COPYING.md).
 
 La originalidad y autoría de cada elemento contenido en el repositorio
 es responsabilidad de quien lo registró (alumno o profesor).
