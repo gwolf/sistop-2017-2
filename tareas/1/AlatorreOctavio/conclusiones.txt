@@ -1,0 +1,40 @@
+OS: Windows 10 home edition.
+Programa para trazar: Dr Memory.
+Programa Objetivo trazado: World of Warcraft.
+Por qué elegí este programa? simple y mera curiosidad lol.
+
+Observaciones:
+
+Pese a tener un log de resultados colosal, en realidad lo que tenemos es el mismo posible error presentándose 689 veces, se reserva memoria
+con RtlAllocateHeap para el juego y acto seguido se crea un hilo con KERNEL32.dll!BaseThreadInitThunk. Esto es interpretado por Dr Memory
+como un "possible leak" por razones que no alcanzo a comprender totalmente, pero asumo que tiene algo que ver con que el juego carga parte
+considerable de su programa en memoria de video.
+
+Después de los muy parecidos 688 posibles leaks el log concluye con una llamada a sistema que aparentemente maneja todos los hilos que creó
+la ejecución del juego, esto ultimo no se si lo comprendo realmente dado que el log informa que se manejó un caso y 2047 similares fueron
+creados pero no cerrados.
+
+Análisis y conclusión:
+
+Creo que elegí un programa demasiado complejo para esta tarea, pero como el log me mostraba el mismo reporte tantas veces creí que podría
+hacer un análisis competente de lo ocurrido.
+
+Lo que me da a entender el log es que el juego World of Warcraft parte su proceso en muchos hilos que van reservando bloques de memoria, 
+y que dichos hilos rara vez o nunca son cerrados cuando el juego finaliza su ejecución. Esto habla de poca eficiencia en la programación
+del juego (cosa que no suele importarle a los desarrolladores de juegos lol) y de una cantidad de basura tremenda que es dejada en memoria
+cada vez que uno entra a jugar. A esto útlimo podría dársele el beneficio de la duda, puesto que Dr Memory simplemente ejecuta el programa
+que le das a trazar y prosigue con hacer el trace y termina de trazar sin terminar la ejecución del programa.
+
+Posiblemente los hilos son borrados una vez que el jugador cierra el programa, pero no encontré un comando para trazar WoW.exe mientras
+yo estuviera jugando, además de que dado que es un juego online se requieren muchas interacciones profundas con el servidor cosa que obviamente
+la ejecución de Dr Memory no hizo. Tal vez la ejecución del juego crea todos los hilos necesarios para el funcionamiento óptimo
+del mismo sin importarle si quien ejecutó el cliente va a jugar o si quiera a iniciar sesión, simple carga preventiva que aparenta un
+funcionamiento óptimo de programa cuando en realidad carga todo sin tomar en cuenta si será necesario o no y de ese modo cuando el usuario
+quiere usar una funcionalidad del programa dice algo como "wow que rápido lo hizo" creyendo ilusamente que el codigo es muy eficiente
+cuando en realidad lo que quería ya habia sido cargado en memoria junto con todo el resto desde el principio "por si acaso".
+
+Concluyo que este juego tiene una programación no óptima que no se detiene a pensar si desperdicia recursos o los acapara en vano dañando
+el rendimiento general de la computadora donde corre, cosa que ya sabía desde antesde tomar esta materia y que siendo sinceros no me cuesta
+creer viniendo de desarrolladores de juegos incluso cuando sea ferviente fanático de los mismos. Sin embargo ha sido una grata experiencia
+analizar el por qué juegos como WoW tienen tiempos de carga lentos y suelen "trabar" los otros procesos en mi PC cuando antes simplemente
+sabía que el juego tiene ineficiencias pero no las razones detrás de las mismas.
