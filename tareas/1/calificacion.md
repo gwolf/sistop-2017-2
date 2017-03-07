@@ -1,9 +1,9 @@
 # Calificación de la tarea 1 (depuración por _trazas_)
 
-## Entregas en tiempo
+## Entregas en tiempo (_t_ ≤ 21.02.2017)
 
 ### Isaac Cruz
-* **Archivo:** [./CruzIsaac/DepuracionPorTrazas.pdf](./CruzIsaac/DepuracionPorTrazas.pdf)
+* **Archivo:** [DepuracionPorTrazas.pdf](./CruzIsaac/DepuracionPorTrazas.pdf)
 * **Calificación:** 8
 * **Comentarios:**
   * Si bien `access` sirve directamente para verificar permisos, en
@@ -51,7 +51,7 @@
     ellas _no se puede obtener_ la naturaleza de ejecución de `cp`.
 
 ### Ricardo Hernández
-* **Archivo:** [./HernandezRicardo/tarea1.txt](./HernandezRicardo/tarea1.txt)
+* **Archivo:** [tarea1.txt](./HernandezRicardo/tarea1.txt)
 * **Calificación:** 8
 * **Comentarios:**
   * Ojo con los formalismos: En tu explicación del `execve` indicas
@@ -79,7 +79,7 @@
     duras penas ha comenzado.
 
 ### Servando López
-* **Archivo:** [./LopezFernandezServandoMiguel/Trace.pdf](./LopezFernandezServandoMiguel/Trace.pdf)
+* **Archivo:** [Trace.pdf](./LopezFernandezServandoMiguel/Trace.pdf)
 * **Calificación:** 10
 * **Comentarios:**
   * ¡Muy buen trabajo!
@@ -111,7 +111,7 @@
     física de la red (obtenido por la llamada `SIOCGIFHWADDR`)
 
 ### Afferny Ramírez
-* **Archivo:** [./RamirezAfferny/tarea1.txt](./RamirezAfferny/tarea1.txt)
+* **Archivo:** [tarea1.txt](./RamirezAfferny/tarea1.txt)
 * **Calificación:** 7
 * **Comentarios:**
   * Las llamadas relacionadas con `epoll` no verifican entrada/salida,
@@ -135,7 +135,7 @@
     pero presentas conclusiones que no vienen de lo observado.
 
 ### Jesús Rivera
-* **Archivo:** [./RiveraJesus/tarea1.txt](./RiveraJesus/tarea1.txt)
+* **Archivo:** [tarea1.txt](./RiveraJesus/tarea1.txt)
 * **Calificación:** 10
 * **Comentarios:**
   * En tu primer grupo de llamadas: No es que el `4` especifique la
@@ -160,7 +160,7 @@
     sigue bastante de cerca lo que les pedí en esta tarea.
 
 ### Julio Rodríguez
-* **Archivo:** [./RodriguezJulio/tarea.txt](./RodriguezJulio/tarea.txt)
+* **Archivo:** [tarea.txt](./RodriguezJulio/tarea.txt)
 * **Calificación:** 8
 * **Comentarios:**
   * Poquito texto, y de entrada hay que llamarte la atención sobre la
@@ -193,4 +193,90 @@
     este caso el error de hablar de _localidades de memoria_; no hemos
     abordado esto en clase, y puede ser una confusión de tu parte.
 
-## Entregas extemporáneas
+## Entregas extemporáneas ( 21.02.2017 < _t_ ≤ 28.02.2017)
+
+Se califican sobre 8
+
+### Octavio Alatorre
+* **Archivos:**
+  [global.2456.log](./AlatorreOctavio/DrMemory-wow.exe.2456.000/global.2456.log),
+  [missing_symbols.txt](latorreOctavio/DrMemory-wow.exe.2456.000/missing_symbols.txt),
+  [potential_errors.txt](./AlatorreOctavio/DrMemory-wow.exe.2456.000/potential_errors.txt),
+  [results.txt](./AlatorreOctavio/DrMemory-wow.exe.2456.000/results.txt),
+  [suppress.txt](./AlatorreOctavio/DrMemory-wow.exe.2456.000/suppress.txt),
+  [conclusiones.txt](./AlatorreOctavio/conclusiones.txt)
+* **Calificación:** 9 × 0.8 = 7.2
+* **Comentarios:**
+    * **GUAU**... Lanzarte a analizar algo tan complejo como un juego
+        resulta...  impresionante :-) Claro, el volumen de información es
+        demasiado como para encontrar qué está ocurriendo.
+    * Lo que mencionas de los posibles _leaks_: Explico brevemente, ya
+      lo platicaremos más adelante. Cuando obtienes memoria en C
+      mediante un `malloc()`, el sistema te otorga un _apuntador_ a un
+      espacio de memoria reservado. Como programador, tienes la
+      obligación de mantener la contabilidad de la memoria que has
+      pedido.
+	  
+	  Si en algún momento tienes un bloque de memoria asignado por
+      `malloc()` y dejas de utilizarlo, debes liberarlo con
+      `free()`. Si no lo liberaste, esa memoria se mantiene asignada y
+      reservada durante el tiempo de vida de tu programa, pero no
+      tienes cómo llegar a ella — Y así, paulatinamente, el espacio en
+      memoria que tu programa ocupa va creciendo _sin sentido_. En un
+      programa que ejecutas por largo tiempo, esto puede pegarle a la
+      usabilidad.
+	  
+	  Vamos, los _memory leaks_ (_goteos_ de memoria) son un error de
+      programación... Podrías verlos como relativamente menores, pero
+      no por eso menos importantes de verificar. Ahora, lo que
+      _DrMemory_ te está indicando es que es un _posible_ leak, no
+      tiene certeza.
+    * `RtlAllocateHeap`, y prácticamente todas las llamadas _normales_
+      de la biblioteca estándar (RTL es del _RunTime Library_,
+      _biblioteca en tiempo de ejecución_,
+      [revisa la documentación de MSDN](https://msdn.microsoft.com/en-us/library/windows/hardware/ff553354%28v=vs.85%29.aspx))
+      trabajan con la memoria _del sistema_. Para asignar y liberar
+      memoria gráfica recuerda que son más bien llamadas que
+      parecerían _de red_ o _de comunicación_ sobre un bus a un
+      procesador especializado. Trazando un programa no puedes obtener
+      información de lo que hace el GPU; si acaso, podrías _volcar_
+      bloques de memoria que se "avientan" entre CPU y GPU, o hacer un
+      análisis de frecuencia de _cada cuánto tiempo_ ocurren estas
+      transferencias.
+    * En efecto, creo que elegiste un mal candidato para trazar. La
+      cantidad de llamadas que tiene que hacer, y la cantidad de
+      niveles de abstracción que hay sobre de éstas,
+      es... Sencillamente bestial :-]
+
+## Entregas _muy_ extemporáneas ( 28.02.2017 < _t_ ≤ 14.03.2017)
+
+Se califican sobre 5
+
+### Ivan Hernández
+* **Archivo:** [HernandezIvan/tareaSO.docx](HernandezIvan/tareaSO.docx)
+* **Calificación:** 8 × 0.5 = 4
+* **Comentarios:** 
+    * Veo que al no haber logrado un mayor avance en sólo una
+      invocación, revisaste con tres comandos diferentes. ¡bien! :-)
+    * Recuerda del ejemplo que les presenté en clase: La mayor parte
+      de las primeras llamadas que ves son meramente _armar el
+      ambiente_ para poder ejecutar el comando que pediste. Muchas de
+      las llamadas que ves en las primeras decenas de líneas son las
+      necesarias para inciar la ejecución que solicitó el `execve()`
+        * Si comparas las tres ejecuciones, los primeros muchos pasos
+          son los mismos: Cargar bibliotecas y algunos binarios que
+          permiten la ejecución del programa mismo que te interesa
+    * En tu primer caso, ¿cómo es que llega _exitosamente_ a la
+      llamada `write` en que ilustras que _escribe los datos del día_?
+        * Parte importante de la lógica interna de `date` es
+          entregarte la fecha (que obtiene en este caso usando
+          `gettime(&t)`) en tu zona horaria y formateada en el
+          lenguaje del sistema que tú prefieres (en este caso, el
+          español). Por eso ves lecturas a
+          `/usr/lib/locale/locale-archive` y a `/etc/localtime`.
+    * *Mapear* un espacio de memoria significa pedirle al sistema que
+      te asigne una región de memoria del tamaño que le indiques, con
+      los modos de lectura/escritura y otros detalles que presenta
+      como argumentos.
+
+## Pasado el 14.03.2017, *no se recibe la tarea*
