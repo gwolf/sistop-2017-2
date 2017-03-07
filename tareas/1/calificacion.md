@@ -253,7 +253,7 @@ Se califican sobre 8
 Se califican sobre 5
 
 ### Ivan Hernández
-* **Archivo:** [HernandezIvan/tareaSO.docx](HernandezIvan/tareaSO.docx)
+* **Archivo:** [tareaSO.docx](./HernandezIvan/tareaSO.docx)
 * **Calificación:** 8 × 0.5 = 4
 * **Comentarios:** 
     * Veo que al no haber logrado un mayor avance en sólo una
@@ -278,5 +278,38 @@ Se califican sobre 5
       te asigne una región de memoria del tamaño que le indiques, con
       los modos de lectura/escritura y otros detalles que presenta
       como argumentos.
+
+### Antonio Arizmendi
+* **Archivo:** [Traza.pdf](./ArizmendiAntonio/Traza.pdf)
+* **Calificación:** 9 × 0.5 = 4.5
+* **Comentarios:** 
+    * Como pasó con varios de tus compañeros, iniciaste la traza al
+      inicio de la ejecución — Lo que ves no llega aún a la ejecución
+      de tu programa mismo, sino que está meramente _acomodando el
+      universo_ para atender a tu solicitud
+    * En todo caso, el programa habrá terminado en fracaso, ¿no?
+      (porque no le indicaste el nombre de un directorio a crear: Tu
+      línea 1 marca que llamaste `["mkdir"]`, sin indicar el nomrbe
+      del directorio. Supongo que la ejecución habrá terminado
+      aproximadamente así:
+
+			write(2, "mkdir: ", 7mkdir: )                  = 7
+			write(2, "missing operand", 15missing operand)         = 15
+			write(2, "\n", 1)                       = 1
+			write(2, "Try 'mkdir --help' for more info"..., 41Try 'mkdir --help' for more information.) = 41
+			close(1)                                = 0
+			close(2)                                = 0
+			exit_group(1)                           = ?
+			+++ exited with 1 +++
+
+	* Si hubieras especificado un nombre de directorio (sea `cuac`),
+      terminaría de la siguiente forma:
+
+			mkdir("/tmp/cuac", 0777)                = 0
+			close(1)                                = 0
+			close(2)                                = 0
+			exit_group(0)                           = ?
+			+++ exited with 0 +++
+
 
 ## Pasado el 14.03.2017, *no se recibe la tarea*
