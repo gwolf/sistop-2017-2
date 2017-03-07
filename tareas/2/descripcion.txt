@@ -1,0 +1,29 @@
+pre-descripción
+
+Cuando la gente dice "propósito general" quieren decir un algo que pueda hacer cualquier cosa más o menos bien
+sin ser demasiado especializado. hablando de juegos por ejemplo el control estandar (o un simple teclado y mouse
+hablando de PC) fácilmente se cataloga como "de proposito general" osea puedes jugar cualquier cosa con dicho
+periférico sin tener un problema. Pero si llevamos la exigencia a nivel competitivo los juegos de pelea por poner
+un ejemplo muchas veces requieren combinaciones diversas de botones en rápida sucesión combinados con entradas
+direccionales, y casi siempre hacer eso en un simple control resulta demasiado dificil. Es entonces cuando los
+jugadores recurren al famoso "arcade stick"; una caja que imita el panel de una máquina arcade de esas retro, en
+donde los botones estan linealmente distribuidos y son alcanzables con cualquiera de los dedos, es decir ya no
+está la limitante de usar solo el pulgar para todos los botones como en el control "normalito".El arcade stick,
+sin embargo, es lo que llamamos "especializado" o "de propósito específico" ya que nos da una gran mejora en
+nuestros links, cancels y demás a la hora de jugar street fighter, pero difícilmente nos será útil para jugar
+otro tipo de juegos que no sean fighters puesto que la manera en la que usas los controles difiere demasiado.
+
+Esta analogía aparentemente puede aplicar en los procesadores, llamamos de propósito general a los chips intel con
+2-3 núcleos porque pueden correr office, spotify, chrome y otras cosillas al mismo tiempo sin mucho rollo. Pero
+cuando hablamos de computo real yo creo que no existe algo como propósito general dado que si lo llevamos a la
+definición formal no existe un conjunto de hardware que pueda correr decentemente cualquier OS o cualquier set
+de programas... ya ni siquiera mencionemos un solo procesador que haga eficientemente todo lo anterior.
+Si nos vamos a juegos hoy en dia necesitamos un GPU de ley, osea un pedazo de hardware de propósito específico.
+Lo mismo aunque no juguemos pero si nos dedicamos al arte visual, desde modelado 3D hasta simple produccion de
+video sin un GPU no podemos vivir. Algunos sistemas como MAC OS incluso estan diseñados para no funcionar en
+hardware que no sea específico, si queremos tener MAC OS en una PC que no sea apple tenemos que armar la
+odisea llamada en los foros geeks "hackintosh" aka un conjunto de hardware especifico que sabemos no tiene
+demasiadas incompatibilidades con el sistema operativo, y a eso sumarle otras tácticas ñeras como usar drivers
+falsos que hacen creer a MAC OS que esta en una MAC y no en otra cosa, y podria llenar muchos mas parrafos que
+solo 2 con ejemplos que quebrantan el dichoso "propósito general" dentro de procesadores, asi que mejor aqui
+le paro :P
