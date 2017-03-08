@@ -1,5 +1,8 @@
 # Práctica 2: Ignorando archivos *innecesarios*
 
+    Práctica creada el 14.02.2017
+	Entrega en tiempo: Martes 21.02.2017
+
 Los sistemas de control de cambios están hechos para poder dar
 seguimiento a la historia de los archivos que forman parte de nuestro
 proyecto. Ahora bien, cuando desarrollamos software, trabajamos con

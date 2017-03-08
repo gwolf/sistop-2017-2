@@ -1,0 +1,5 @@
+import platform
+n = platform.processor()
+file = open("process.txt","w")
+file.write("Process".format(n))
+file.close()
