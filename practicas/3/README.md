@@ -1,7 +1,7 @@
 # Práctica 3: Ramas paralelas de desarrollo
 
-    Práctica creada el 23.02.2017
-	Entrega en tiempo: Jueves 02.03.2017
+    Práctica creada el 02.03.2017
+	Entrega en tiempo: Jueves 07.03.2017
 
 Como era de esperarse, ya ha ocurrido con varios de ustedes que envían
 un *pull request* incluyen una práctica y una tarea, y si no nos
