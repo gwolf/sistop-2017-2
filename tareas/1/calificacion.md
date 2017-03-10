@@ -193,7 +193,7 @@
     este caso el error de hablar de _localidades de memoria_; no hemos
     abordado esto en clase, y puede ser una confusión de tu parte.
 
-## Entregas extemporáneas ( 21.02.2017 < _t_ ≤ 28.02.2017)
+## Entregas extemporáneas (21.02.2017 < _t_ ≤ 28.02.2017)
 
 Se califican sobre 8
 
@@ -248,7 +248,7 @@ Se califican sobre 8
       niveles de abstracción que hay sobre de éstas,
       es... Sencillamente bestial :-]
 
-## Entregas _muy_ extemporáneas ( 28.02.2017 < _t_ ≤ 14.03.2017)
+## Entregas _muy_ extemporáneas (28.02.2017 < _t_ ≤ 14.03.2017)
 
 Se califican sobre 5
 
