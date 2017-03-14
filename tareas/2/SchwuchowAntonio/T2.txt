@@ -1,0 +1,50 @@
+Schwuchow Machorro Antonio
+
+There´s no shuch thing as a General-Purpous Processor
+
+Antes:
+	Supongo que la idea se refiere a que un
+procesador, no importa que tan complejo sea, nunca va
+a ser ideal para cualquier equipo (usuario).
+
+Las tarjetas graficas son procesadores de imagen y
+video. Existen procesadores para computadoras
+cuanticas. Si alguien tiene una necesidad particular
+para su computadora, necesita un procesador
+particular tambien. Su se crea un uperprocesador
+que pueda cumplir con todas las necesidades posibles
+en el planeta, el procesador sería demasiado robusto
+para cuando una sola máquina lo esté utilizando, y
+se gastaría demasiada energía.
+
+
+Despues:
+	No pensé que pasaro eso de que compañías
+tuvieran esa idea. En los primeros parrafos se
+explica la profundidad de "el error". Tambipen se
+muestra que siendo fiel a la idea conceptual de un
+procesador multipropósito es algo prácticamente
+teórico y específico, y que la industria esta lejos
+de fabricar uno pronto.
+
+Creo que en muchos puntos si comparaban la perfección
+con cómo debería ser un supuesto procesador de
+proposito general. El análisis podría continuar en lo
+específico para desacreditar el uso del concepto.
+
+Leyendo el primer comentario creo que tiene un punto
+de vista muy válido. Como dice el autor, hasta la
+complejidad de la posible infinidad de casos que
+muestren que no hay nada que lo cumpla todo.
+Para entornos un poco mas comerciales se podrían
+manejar los procesadores como de propósito general
+en algunos contextos.
+
+Creo que David Chisnall profundizó demasiado en
+los extremos de aspectos específicos y teóricos
+para combatir un concepto muy idealista de un
+procesador de propósito-general. Incluso criticaba
+con suposiciones personales subjetivas. Concluyo que
+no hay una linea que defina bien que tan específicos
+hay que ser a la hora de crear un procesador asi y
+que cumpla con una especificidad "correcta".

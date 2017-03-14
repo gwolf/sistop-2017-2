@@ -1,0 +1,8 @@
+Lucina Base Stats
+
+Atk: 24
+Hp:  18~19
+Res: 3~4
+Def: 6~7
+Spd: 10~11
+Rarity: 5*
