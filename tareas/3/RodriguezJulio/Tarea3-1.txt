@@ -1,0 +1,26 @@
+El problema que tome en esta tarea es el de el profesor que da asesorias a sus alumnos
+
+La forma en que resolvimos el problema fue con el idioma ruby pero no tenemos una buena 
+utilizacion o experiencia con este asi que si hay algun error le suplico tenga algo de 
+pasiencia, tampoco tengo ninguna expieriencia en ningun otro idioma utilizando hilos pero 
+fue dandome ayuda de sus ejemplos para lograr una buena resolucion del problema
+
+En primera instancia podemos decir que los principales personajes de este problema fueron 
+los alumnos que van sentandose en las sillas si es que hay lugar para poder preguntar y el 
+profesor que permite que un  alumno le formule una pregunta y en dado caso que ningun alumno 
+este en las sillas el puede acostarse y descanzar en ellas
+
+En este problema implementamos varios muxes, multiplex y señalizaciones 
+
+Primero definimos al profesor con las funciones de pasar y descanso. La primera indica si los 
+alumnos pueden pasar a sentarse y la segunda indica si no hay alumnos y se pone a descanzar. 
+
+pasar: permite que los alumnos pasen de uno por uno y si hay lugar se sienten con un mux y un 
+multiplez para el numero de sillas exactas
+
+descanzo: en dado caso qeu sea cero el numero de alumnos que ocuparon lugar mientras sea cero el maestro descanzar
+
+Despues definimos el alumno de igual forma con ayuda de esos tipos de semaphoros le damos dos 
+funciones una en la que pregunta si puede pasar y otra en la  que hace las preguntas de que necesita 
+y se va desacupa el lugar y otro mas lo ocupa.
+

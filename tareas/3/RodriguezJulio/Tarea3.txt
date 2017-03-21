@@ -1,0 +1,66 @@
+require 'yam1'
+require 'concurrent'
+sillas = 5
+Nombres = ['Octavio Alatorre', 'Antonio Arizmendi', 'Emilio Cabrera',
+           'Isaac Cruz', 'Fernando de la Torre', 'Jaziel Fuentes',
+           'Iñaki Hernandez', 'Ivan Hernandez', 'Ricardo Hernandez',
+           'Servando Lopez', 'Alberto Negrete', 'Omar Orozco', 'Diego Pacheco',
+           'Jesus Pacheco', 'Afferny Ramirez', 'Eduardo Ramirez',
+           'Alejandro Rivera', 'Baruch Rivera', 'Julio Rodriguez',
+           'Antonio Schwuchow', 'Eduardo Stevens', 'Armando Valadez']
+
+
+class profesor
+
+def intialize
+	@min = 0
+	@max = sillas-1
+	@numalumnos = 0
+	@lugares = Concurrent::Semaphore.new(4)
+	@mux = Concurrent::Semaphore.new(0)
+	@mux1 = Concurrent::Semaphore.new(0)
+end
+
+def pasar
+	@mux1.acquire
+	if (@numalumnos <= @max)
+		@lugares.acquire
+		@numalumnos = @numalumnos+1
+	end
+	@mux1.release
+	return pregunta
+end
+
+def pregunta
+	@mux.release
+	puts "le estoy preguntando"
+	sleep 0.3
+	@mux.acquire
+	@lugares.release
+end
+
+def descanso 
+	if(@numalumnos == 0)
+		puts "estoy descanzando"
+		sleep 0.3
+	end
+	else
+		return pasar
+	end
+end
+
+
+
+class alumno
+
+def initialize(nombre)
+	@nombre = nombre
+	@puedo = Concurrent::Semaphore.new(0)
+	
+
+end
+
+def toco
+puts " puedo pasar profesor ??"
+	return pasar
+end 
