@@ -1,6 +1,5 @@
 #!/usr/bin/ruby
 # coding: utf-8
-require 'yaml'
 require 'concurrent'
 Pisos = 5
 CupoMax = 5
