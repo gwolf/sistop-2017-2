@@ -1,0 +1,13 @@
+Bueno en este programa intente dar solución al problema de los gatos y el ratón,
+sin embargo, no tuve mucho exito, maneje como hilos a los gatos y a al ratón
+porque los gatos y los ratones son independientes y tienen "vida propia"
+entonces estos iban a hacercarse a los platos tambien finitos en una cantidad de 1-100
+porque en el problema dice que sean m platos.
+Implemente una serie de semaforos para indicar si el plato esta o no ocupado, es decir el gato, o raton, entra en ese plato
+y lo va a detener (aquire) y hasta que termine de comer lo va a soltar (release),
+los mutex los use para que entraran más animales a comer y no se detuvieran si es que alguno ya estaba cominedo.
+La condición de comerse al ratón no la he puesto porque la queria poner en donde metiera los hilos a la lista
+digamos, si esta lista[1] y ahi hay un gato y en lista [2] hay un raton pues con la condicional (if) era más sencillo
+de resolver sin embargo como no pude meterlos en una lista que yo queria pues esto no lo pude hacer,
+la lista gatitos era para prbar como meter hilos en una lista pero no me ha servido de mucho por ahora...
+
