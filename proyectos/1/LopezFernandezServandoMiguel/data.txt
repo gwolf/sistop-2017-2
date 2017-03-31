@@ -1,0 +1,143 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.1 111160  5144 ?        Ss   16:59   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    16:59   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    16:59   0:01 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   16:59   0:00 [kworker/0:0H]
+root         7  0.0  0.0      0     0 ?        S    16:59   0:12 [rcu_sched]
+root         8  0.0  0.0      0     0 ?        S    16:59   0:00 [rcu_bh]
+root         9  0.0  0.0      0     0 ?        S    16:59   0:00 [migration/0]
+root        10  0.0  0.0      0     0 ?        S    16:59   0:00 [watchdog/0]
+root        11  0.0  0.0      0     0 ?        S    16:59   0:00 [watchdog/1]
+root        12  0.0  0.0      0     0 ?        S    16:59   0:00 [migration/1]
+root        13  0.0  0.0      0     0 ?        S    16:59   0:01 [ksoftirqd/1]
+root        15  0.0  0.0      0     0 ?        S<   16:59   0:00 [kworker/1:0H]
+root        16  0.0  0.0      0     0 ?        S<   16:59   0:00 [khelper]
+root        17  0.0  0.0      0     0 ?        S    16:59   0:00 [kdevtmpfs]
+root        18  0.0  0.0      0     0 ?        S<   16:59   0:00 [netns]
+root        19  0.0  0.0      0     0 ?        S    16:59   0:00 [khungtaskd]
+root        20  0.0  0.0      0     0 ?        S<   16:59   0:00 [writeback]
+root        21  0.0  0.0      0     0 ?        SN   16:59   0:00 [ksmd]
+root        22  0.0  0.0      0     0 ?        SN   16:59   0:00 [khugepaged]
+root        23  0.0  0.0      0     0 ?        S<   16:59   0:00 [crypto]
+root        24  0.0  0.0      0     0 ?        S<   16:59   0:00 [kintegrityd]
+root        25  0.0  0.0      0     0 ?        S<   16:59   0:00 [bioset]
+root        26  0.0  0.0      0     0 ?        S<   16:59   0:00 [kblockd]
+root        29  0.0  0.0      0     0 ?        S    16:59   0:00 [kswapd0]
+root        30  0.0  0.0      0     0 ?        S<   16:59   0:00 [vmstat]
+root        31  0.0  0.0      0     0 ?        S    16:59   0:00 [fsnotify_mark]
+root        37  0.0  0.0      0     0 ?        S<   16:59   0:00 [kthrotld]
+root        38  0.0  0.0      0     0 ?        S<   16:59   0:00 [ipv6_addrconf]
+root        40  0.0  0.0      0     0 ?        S<   16:59   0:00 [deferwq]
+root        76  0.0  0.0      0     0 ?        S<   16:59   0:00 [acpi_thermal_pm]
+root        77  0.0  0.0      0     0 ?        S    16:59   0:00 [khubd]
+root        78  0.0  0.0      0     0 ?        S<   16:59   0:00 [ata_sff]
+root        79  0.0  0.0      0     0 ?        S<   16:59   0:00 [ttm_swap]
+root        80  0.0  0.0      0     0 ?        S<   16:59   0:00 [kpsmoused]
+root        81  0.0  0.0      0     0 ?        S<   16:59   0:00 [radeon-crtc]
+root        82  0.0  0.0      0     0 ?        S<   16:59   0:00 [radeon-crtc]
+root        84  0.0  0.0      0     0 ?        S    16:59   0:00 [scsi_eh_0]
+root        85  0.0  0.0      0     0 ?        S<   16:59   0:00 [scsi_tmf_0]
+root        90  0.0  0.0      0     0 ?        S<   16:59   0:00 [kworker/1:1H]
+root        91  0.0  0.0      0     0 ?        S<   16:59   0:00 [kworker/0:1H]
+root       121  0.0  0.0      0     0 ?        S    16:59   0:00 [jbd2/sda1-8]
+root       122  0.0  0.0      0     0 ?        S<   16:59   0:00 [ext4-rsv-conver]
+root       155  0.0  0.0      0     0 ?        S    16:59   0:00 [kauditd]
+root       168  0.0  0.1  33084  4692 ?        Ss   16:59   0:01 /lib/systemd/systemd-journald
+root       172  0.0  0.1  41628  3952 ?        Ss   16:59   0:00 /lib/systemd/systemd-udevd
+root       216  0.0  0.0      0     0 ?        S<   16:59   0:00 [kmemstick]
+root       223  0.0  0.0      0     0 ?        S<   16:59   0:00 [cfg80211]
+root       240  0.0  0.0      0     0 ?        S<   16:59   0:00 [hd-audio0]
+root       243  0.0  0.0      0     0 ?        S<   16:59   0:00 [hd-audio1]
+root       361  0.0  0.0      0     0 ?        S    16:59   0:00 [jbd2/sda6-8]
+root       362  0.0  0.0      0     0 ?        S<   16:59   0:00 [ext4-rsv-conver]
+root       543  0.0  0.0  37080  2792 ?        Ss   16:59   0:00 /sbin/rpcbind -w
+statd      553  0.0  0.0  37280  2860 ?        Ss   16:59   0:00 /sbin/rpc.statd
+root       558  0.0  0.0      0     0 ?        S<   16:59   0:00 [rpciod]
+root       560  0.0  0.0      0     0 ?        S<   16:59   0:00 [nfsiod]
+root       567  0.0  0.0  23356   204 ?        Ss   16:59   0:00 /usr/sbin/rpc.idmapd
+root       569  0.0  0.4 382488 14836 ?        Ssl  16:59   0:02 /usr/sbin/NetworkManager --no-daemon
+root       571  0.0  0.1  55184  5412 ?        Ss   16:59   0:00 /usr/sbin/sshd -D
+daemon     572  0.0  0.0  19024  1892 ?        Ss   16:59   0:00 /usr/sbin/atd -f
+root       573  0.0  0.2 336284  7964 ?        Ssl  16:59   0:00 /usr/sbin/ModemManager
+root       574  0.0  0.0  27504  2856 ?        Ss   16:59   0:00 /usr/sbin/cron -f
+root       578  0.0  0.0  28364  2860 ?        Ss   16:59   0:00 /lib/systemd/systemd-logind
+avahi      584  0.0  0.0  32224  2824 ?        Ss   16:59   0:00 avahi-daemon: running [cinquecento.local]
+message+   585  0.0  0.1  43004  4208 ?        Ss   16:59   0:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+avahi      603  0.0  0.0  32100   252 ?        S    16:59   0:00 avahi-daemon: chroot helper
+root       640  0.0  0.0  19276  2072 ?        Ss   16:59   0:00 /usr/sbin/irqbalance --pid=/var/run/irqbalance.pid
+root       643  0.0  0.6 392980 22200 ?        Ssl  16:59   0:00 /usr/sbin/libvirtd
+root       644  0.0  0.1 258672  3632 ?        Ssl  16:59   0:00 /usr/sbin/rsyslogd -n
+root       648  0.0  0.1  86104  6568 ?        Ss   16:59   0:00 /usr/sbin/cupsd -f
+root       649  0.0  0.1  71704  5084 ?        Ss   16:59   0:00 /usr/sbin/cups-browsed
+root       660  0.0  0.2 312976  8264 ?        SLsl 16:59   0:00 /usr/sbin/lightdm
+root       662  0.0  0.0  14416  2060 tty1     Ss+  16:59   0:00 /sbin/agetty --noclear tty1 linux
+root       663  0.0  0.2 310228  9688 ?        Ssl  16:59   0:00 /usr/lib/policykit-1/polkitd --no-debug
+root       886  1.8  1.4 235072 52808 tty7     Ssl+ 16:59   5:11 /usr/bin/X :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch
+root       894  0.0  0.1  31000  6632 ?        Ss   16:59   0:01 /sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+Debian-+   902  0.0  0.0  55312  3368 ?        Ss   16:59   0:00 /usr/sbin/exim4 -bd -q30m
+lightdm    934  0.0  0.1  35632  3880 ?        Ss   17:00   0:00 /lib/systemd/systemd --user
+lightdm    937  0.0  0.0  52088  2124 ?        S    17:00   0:00 (sd-pam)  
+lightdm    953  0.0  0.0  24504  1904 ?        S    17:00   0:00 /usr/bin/dbus-launch --autolaunch 4ad1c076a8394fe3bf746e4ceec71eb9 --binary-syntax --close-stderr
+lightdm    954  0.0  0.0  42124  2424 ?        Ss   17:00   0:00 /usr/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session
+lightdm    956  0.0  0.2 376424  8204 ?        Sl   17:00   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+lightdm    960  0.0  0.0  42124  3276 ?        S    17:00   0:00 /usr/bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+lightdm    963  0.0  0.1 125328  5016 ?        Sl   17:00   0:02 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+root       969  0.0  0.2 268756  9000 ?        Sl   17:00   0:00 lightdm --session-child 13 24
+servand+   974  0.0  0.1  35632  3904 ?        Ss   17:00   0:00 /lib/systemd/systemd --user
+servand+   975  0.0  0.0  52088  2132 ?        S    17:00   0:00 (sd-pam)  
+servand+   981  0.0  0.0   4336  1572 ?        Ss   17:00   0:00 /bin/sh /etc/xdg/xfce4/xinitrc -- /etc/X11/xinit/xserverrc
+servand+  1007  0.0  0.0  10700   336 ?        Ss   17:00   0:00 /usr/bin/ssh-agent /usr/bin/dbus-launch --exit-with-session x-session-manager
+servand+  1010  0.0  0.0  15960  1700 ?        S    17:00   0:00 /usr/bin/dbus-launch --exit-with-session x-session-manager
+servand+  1011  0.0  0.0  42624  2944 ?        Ss   17:00   0:01 /usr/bin/dbus-daemon --fork --print-pid 4 --print-address 6 --session
+servand+  1021  0.0  0.4 319992 15172 ?        Sl   17:00   0:01 xfce4-session
+servand+  1024  0.0  0.1  37528  4280 ?        S    17:00   0:00 /usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd
+servand+  1028  0.0  0.0  19660   244 ?        Ss   17:00   0:00 /usr/bin/gpg-agent --sh --daemon --write-env-file /home/servandomiguel/.cache/gpg-agent-info
+servand+  1029  0.0  0.5 161780 18736 ?        S    17:00   0:07 xfwm4 --display :0.0 --sm-client-id 236009148-4e7f-49b7-b5cb-7b1eb42e7067
+servand+  1031  0.0  0.8 506216 30472 ?        Sl   17:00   0:11 Thunar --sm-client-id 270c7cb7b-d555-4355-93ad-a210b3e9165d --daemon
+servand+  1032  0.0  0.7 373488 28904 ?        Sl   17:00   0:06 xfce4-panel --display :0.0 --sm-client-id 206382136-9207-44c3-aa07-a880bb26ebe4
+servand+  1034  0.0  0.7 444196 26532 ?        Sl   17:00   0:02 xfdesktop --display :0.0 --sm-client-id 212815075-125c-4fad-89a0-4dd5e6de7b13
+servand+  1035  0.0  0.4 333776 14584 ?        Ssl  17:00   0:00 xfsettingsd --display :0.0 --sm-client-id 221040200-dc4d-4331-a404-d07c1a916452
+servand+  1037  0.0  0.3 229156 13308 ?        Ssl  17:00   0:00 xfce4-power-manager --restart --sm-client-id 24f57eeba-1551-4d5e-9486-a094c69c464d
+servand+  1039  0.0  0.3 585580 12572 ?        SNl  17:00   0:01 /usr/lib/tracker/tracker-miner-fs
+servand+  1045  0.0  0.1 214364  6592 ?        Sl   17:00   0:00 /usr/lib/gvfs/gvfsd
+root      1049  0.0  0.2 304160  8640 ?        Ssl  17:00   0:00 /usr/lib/upower/upowerd
+servand+  1057  0.0  0.5 607572 20328 ?        Sl   17:00   0:06 /usr/lib/tracker/tracker-store
+servand+  1063  0.0  0.2 316316  9052 ?        SNl  17:00   0:00 /usr/lib/tracker/tracker-miner-apps
+servand+  1066  0.0  0.3 149204 13720 ?        S    17:00   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libsystray.so 6 20971559 systray Notification Area Area where notification icons appear 
+servand+  1069  0.0  0.2 316188  8952 ?        SNl  17:00   0:00 /usr/lib/tracker/tracker-miner-user-guides
+servand+  1089  0.0  0.4 145916 15532 ?        S    17:00   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libbattery.so 16 20971560 battery Battery Monitor Show and monitor the battery status 
+servand+  1090  0.0  0.4 158832 14488 ?        S    17:00   0:00 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libactions.so 2 20971561 actions Action Buttons Log out, lock or other system actions 
+servand+  1092  0.0  0.3 222284 13864 ?        Sl   17:00   0:00 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+servand+  1095  0.0  0.2 376428  8348 ?        Sl   17:00   0:00 /usr/lib/at-spi2-core/at-spi-bus-launcher
+servand+  1103  0.0  0.0  42124  3352 ?        S    17:00   0:00 /usr/bin/dbus-daemon --config-file=/etc/at-spi2/accessibility.conf --nofork --print-address 3
+servand+  1108  0.0  0.1 125328  4968 ?        Sl   17:00   0:03 /usr/lib/at-spi2-core/at-spi2-registryd --use-gnome-session
+servand+  1110  0.0  0.9 516504 32964 ?        Sl   17:00   0:07 nm-applet
+servand+  1120  0.0  0.1  64980  5384 ?        S    17:00   0:01 xscreensaver -no-splash
+servand+  1122  0.0  0.2 462728  9776 ?        Sl   17:00   0:00 /usr/lib/gvfs/gvfs-udisks2-volume-monitor
+root      1129  0.0  0.2 467420  9684 ?        Ssl  17:00   0:01 /usr/lib/udisks2/udisksd --no-debug
+servand+  1132  0.0  0.3 1187980 14300 ?       SNl  17:00   0:01 /usr/lib/tracker/tracker-extract
+servand+  1139  0.0  0.2 441144 10012 ?        S<l  17:00   0:03 /usr/bin/pulseaudio --start
+servand+  1149  0.0  0.6 230296 23532 ?        Sl   17:00   0:00 /usr/bin/python /usr/share/system-config-printer/applet.py
+servand+  1150  0.0  0.1  51744  4956 ?        S    17:00   0:00 /usr/lib/x86_64-linux-gnu/gconf/gconfd-2
+rtkit     1152  0.0  0.0 168780  2396 ?        SNsl 17:00   0:00 /usr/lib/rtkit/rtkit-daemon
+servand+  1168  0.0  0.2 460116  8352 ?        Sl   17:00   0:00 /usr/lib/gvfs/gvfsd-trash --spawner :1.11 /org/gtk/gvfs/exec_spaw/0
+servand+  1180  0.0  0.4 424192 16204 ?        Ssl  17:00   0:00 xfce4-volumed
+servand+  1217  0.0  0.0   4336   108 ?        S    17:00   0:00 /bin/sh /usr/bin/start-pulseaudio-x11
+servand+  1218  0.0  0.0  18788  2980 ?        S    17:00   0:00 /usr/bin/xprop -root -spy
+servand+  1325  0.0  0.1 135272  6336 ?        Sl   17:01   0:00 /usr/lib/gvfs/gvfsd-metadata
+root      1540  0.0  0.0      0     0 ?        S    17:14   0:03 [kworker/1:0]
+root      2125  0.0  0.2  25400 10324 ?        S    21:16   0:00 /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /var/run/dhclient-wlan0.pid -lf /var/lib/NetworkManager/dhclient-94ae768c-1318-45ba-8498-7f04b09ca72e-wlan0.lease -cf /var/lib/NetworkManager/dhclient-wlan0.conf wlan0
+root      2255  0.2  0.0      0     0 ?        S    21:18   0:04 [kworker/0:2]
+root      2266  0.0  0.0      0     0 ?        S    21:21   0:00 [kworker/u8:0]
+root      2326  0.2  0.0      0     0 ?        S    21:26   0:02 [kworker/1:2]
+root      2427  0.0  0.0      0     0 ?        S    21:31   0:00 [kworker/u8:1]
+root      2443  0.1  0.0      0     0 ?        S    21:37   0:00 [kworker/u8:2]
+servand+  2537  0.3  0.7 414912 26664 ?        Sl   21:40   0:01 xfce4-terminal
+servand+  2541  0.0  0.0  14692  1796 ?        S    21:40   0:00 gnome-pty-helper
+servand+  2542  0.0  0.1  23568  5552 pts/0    Ss+  21:40   0:00 bash
+root      2547  0.0  0.0      0     0 ?        S    21:40   0:00 [kworker/0:1]
+servand+  2612  0.1  0.1  23556  5540 pts/1    Ss+  21:41   0:00 bash
+servand+  2691  0.2  0.4 454544 15100 ?        SNl  21:44   0:00 /usr/lib/x86_64-linux-gnu/tumbler-1/tumblerd
+servand+  2722  0.3  0.1  23568  5552 pts/2    Ss   21:45   0:00 bash
+servand+  2734 17.4  1.2 362368 44380 pts/2    Sl+  21:45   0:05 python3 monitor_system.py
+servand+  2772  0.0  0.0  19100  2624 pts/2    R+   21:45   0:00 ps aux
