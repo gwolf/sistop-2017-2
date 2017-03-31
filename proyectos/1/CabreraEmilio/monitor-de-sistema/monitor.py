@@ -28,7 +28,9 @@ swp_stats = ()
 uptime = ()
 p_stats = []
 show = ('cpu_load', 'mem_stats', 'swp_stats', 'cpu_stats', 'processes')
-
+mutexes = {}
+for i in show:
+    mutexes[i] = Semaphore(1)
 
 def bytes2human(n):
     """
@@ -56,22 +58,26 @@ def bytes2human(n):
 def get_mem_usage():
     global mem_stats
     while True:
+        mutexes['mem_stats'].acquire()
         mem_stats = (
             bytes2human(psutil.virtual_memory().total),
             bytes2human(psutil.virtual_memory().used),
             psutil.virtual_memory().percent
         )
+        mutexes['mem_stats'].release()
         sleep(0.1)
 
 
 def get_swp_usage():
     global swp_stats
     while True:
+        mutexes['swp_stats'].acquire()
         swp_stats = (
             bytes2human(psutil.swap_memory().total),
             bytes2human(psutil.swap_memory().used),
             psutil.swap_memory().percent
         )
+        mutexes['swp_stats'].release()
         sleep(0.1)
 
 
@@ -90,28 +96,34 @@ def get_cpu_stats():
         }
         for freq in psutil.cpu_freq(percpu=True):
             freqs.append(freq.current)
+        mutexes['cpu_stats'].acquire()
         cpu_stats = {
             'time': times,
             'freq': freqs
         }
+        mutexes['cpu_stats'].release()
         sleep(0.1)
 
 
 def get_cpu_load():
     global cpu_load
     while True:
+        mutexes['cpu_load'].acquire()
         cpu_load = psutil.cpu_percent(percpu=True)
+        mutexes['cpu_load'].release()
         sleep(0.1)
 
 
 def get_process_stats():
     global p_stats
-    p_stats = []
     while True:
+        p_stats = []
+        mutexes['processes'].acquire()
         for process in psutil.process_iter():
             p_stats.append(process.as_dict(['pid', 'username', 'status',
                                             'memory_percent', 'cpu_percent', 'name']))
         p_stats = sorted(p_stats, key=lambda p: p['cpu_percent'], reverse=True)
+        mutexes['processes'].release()
         sleep(0.1)
 
 
@@ -128,32 +140,40 @@ def draw():
     linenum = 0
 
     if 'cpu_load' in show:
+        mutexes['cpu_load'].acquire()
         for cpu in range(cpu_num):
             percent = cpu_load[cpu]
             before = 'CPU%s' % str(cpu + 1)
             after = '%04.1f%%' % percent
             win.addstr(linenum, 1, usage_bar(percent, before, after))
             linenum += 1
+        mutexes['cpu_load'].release()
     if 'mem_stats' in show:
         before = 'RAM '
+        mutexes['mem_stats'].acquire()
         total = mem_stats[0]
         used = mem_stats[1]
         percent = mem_stats[2]
+        mutexes['mem_stats'].release()
         after = '%4s / %4s' % (used, total)
         win.addstr(linenum, 1, usage_bar(percent, before, after))
         linenum += 1
     if 'swp_stats' in show:
         before = 'SWAP'
+        mutexes['swp_stats'].acquire()
         total = swp_stats[0]
         used = swp_stats[1]
         percent = swp_stats[2]
+        mutexes['swp_stats'].release()
         after = '%4s / %4s' % (used, total)
         win.addstr(linenum, 1, usage_bar(percent, before, after))
         linenum += 1
     if 'cpu_stats' in show:
         size = int((win.getmaxyx()[1] - 2) / 5)
+        mutexes['cpu_stats'].acquire()
         times = cpu_stats['time']
         freqs = cpu_stats['freq']
+        mutexes['cpu_stats'].release()
         i = 1
         for n in times:
             win.addstr(linenum, i, "%s: %04.1f%%" % (n, times[n]))
@@ -169,6 +189,8 @@ def draw():
                    curses.A_REVERSE)
         linenum += 1
         lformat = '%-6s %-10s %-8s %05.1f %05.1f %s'
+
+        mutexes['processes'].acquire()
         for i in range(win.getmaxyx()[0] - linenum - 1):
             win.addstr(linenum, 1, lformat % (p_stats[i]['pid'],
                                               p_stats[i]['username'],
@@ -179,6 +201,7 @@ def draw():
                                               ))
             win.clrtoeol()
             linenum += 1
+        mutexes['processes'].release()
     win.refresh()
 
 
