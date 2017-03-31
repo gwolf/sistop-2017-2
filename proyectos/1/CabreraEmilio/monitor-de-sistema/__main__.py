@@ -20,15 +20,15 @@ import threading
 import curses
 import psutil
 
-cpu_num = psutil.cpu_count()
-cpu_load = []
-cpu_time = []
-mem_stats = []
-swp_stats = []
-uptime = []
-process_stats = []
-processes = []
-show = ['cpu_load', 'mem_stats', 'swp_stats', 'processes']
+cpu_num = psutil.cpu_count(logical=False)
+cpu_load = ()
+cpu_stats = {}
+mem_stats = ()
+swp_stats = ()
+uptime = ()
+p_stats = []
+show = ('cpu_load', 'mem_stats', 'swp_stats', 'cpu_stats', 'processes')
+
 
 def bytes2human(n):
     """
@@ -55,31 +55,54 @@ def bytes2human(n):
 
 def get_mem_usage():
     global mem_stats
-    mem_stats = [
+    mem_stats = (
         bytes2human(psutil.virtual_memory().total),
         bytes2human(psutil.virtual_memory().used),
         psutil.virtual_memory().percent
-    ]
+    )
 
 
 def get_swp_usage():
     global swp_stats
-    swp_stats = [
+    swp_stats = (
         bytes2human(psutil.swap_memory().total),
         bytes2human(psutil.swap_memory().used),
         psutil.swap_memory().percent
-    ]
+    )
 
 
-def get_cpu_time():
-    global cpu_time
-    for time in psutil.cpu_times(percpu=True):
-        cpu_time = [time.user, time.system, time.idle]
+def get_cpu_stats():
+    global cpu_stats
+    times = ()
+    freqs = []
+    # for time in psutil.cpu_times_percent(percpu=True):
+    #     times.append((time.user, time.system, time.idle))
+    time = psutil.cpu_times_percent(percpu=False)
+    times = {
+        'User': time.user,
+        'System': time.system,
+        'Idle': time.idle
+    }
+    for freq in psutil.cpu_freq(percpu=True):
+        freqs.append(freq.current)
+    cpu_stats = {
+        'time': times,
+        'freq': freqs
+    }
 
 
 def get_cpu_load():
     global cpu_load
     cpu_load = psutil.cpu_percent(percpu=True)
+
+
+def get_process_stats():
+    global p_stats
+    p_stats = []
+    for process in psutil.process_iter():
+        p_stats.append(process.as_dict(['pid', 'username', 'status',
+                                        'memory_percent', 'cpu_percent', 'name']))
+    p_stats = sorted(p_stats, key=lambda p: p['cpu_percent'], reverse=True)
 
 
 def draw():
@@ -117,6 +140,35 @@ def draw():
         after = '%4s / %4s' % (used, total)
         win.addstr(linenum, 1, usage_bar(percent, before, after))
         linenum += 1
+    if 'cpu_stats' in show:
+        size = int((win.getmaxyx()[1] - 2) / 5)
+        times = cpu_stats['time']
+        freqs = cpu_stats['freq']
+        i = 1
+        for n in times:
+            win.addstr(linenum, i, "%s: %04.1f%%" % (n, times[n]))
+            i += size
+        for n, m in enumerate(freqs):
+            win.addstr(linenum, i, "CPU%s: %.2f GHz" % (n + 1, freqs[n]/1000))
+            i += size
+        linenum += 1
+    if 'processes' in show:
+        lformat = '%-6s %-10s %-8s %-5s %-5s %s'
+        line = lformat % ('PID', 'USER', 'STATUS', 'CPU%', 'MEM%', 'NAME')
+        win.addstr(linenum, 1, line + " " * (win.getmaxyx()[1] - len(line) - 3),
+                   curses.A_REVERSE)
+        linenum += 1
+        lformat = '%-6s %-10s %-8s %05.1f %05.1f %s'
+        for i in range(win.getmaxyx()[0] - linenum - 1):
+            win.addstr(linenum, 1, lformat % (p_stats[i]['pid'],
+                                              p_stats[i]['username'],
+                                              p_stats[i]['status'],
+                                              p_stats[i]['cpu_percent'],
+                                              p_stats[i]['memory_percent'],
+                                              p_stats[i]['name'],
+                                              ))
+            win.clrtoeol()
+            linenum += 1
     win.refresh()
 
 
@@ -125,9 +177,10 @@ def main(stdscr):
     win = stdscr
     while True:
         get_cpu_load()
-        get_cpu_time()
+        get_cpu_stats()
         get_swp_usage()
         get_mem_usage()
+        get_process_stats()
         draw()
         sleep(1)
 
