@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from time import sleep
-import threading
+from threading import *
 import curses
 import psutil
 
@@ -55,54 +55,64 @@ def bytes2human(n):
 
 def get_mem_usage():
     global mem_stats
-    mem_stats = (
-        bytes2human(psutil.virtual_memory().total),
-        bytes2human(psutil.virtual_memory().used),
-        psutil.virtual_memory().percent
-    )
+    while True:
+        mem_stats = (
+            bytes2human(psutil.virtual_memory().total),
+            bytes2human(psutil.virtual_memory().used),
+            psutil.virtual_memory().percent
+        )
+        sleep(0.1)
 
 
 def get_swp_usage():
     global swp_stats
-    swp_stats = (
-        bytes2human(psutil.swap_memory().total),
-        bytes2human(psutil.swap_memory().used),
-        psutil.swap_memory().percent
-    )
+    while True:
+        swp_stats = (
+            bytes2human(psutil.swap_memory().total),
+            bytes2human(psutil.swap_memory().used),
+            psutil.swap_memory().percent
+        )
+        sleep(0.1)
 
 
 def get_cpu_stats():
     global cpu_stats
     times = ()
     freqs = []
-    # for time in psutil.cpu_times_percent(percpu=True):
-    #     times.append((time.user, time.system, time.idle))
-    time = psutil.cpu_times_percent(percpu=False)
-    times = {
-        'User': time.user,
-        'System': time.system,
-        'Idle': time.idle
-    }
-    for freq in psutil.cpu_freq(percpu=True):
-        freqs.append(freq.current)
-    cpu_stats = {
-        'time': times,
-        'freq': freqs
-    }
+    while True:
+        # for time in psutil.cpu_times_percent(percpu=True):
+        #     times.append((time.user, time.system, time.idle))
+        time = psutil.cpu_times_percent(percpu=False)
+        times = {
+            'User': time.user,
+            'System': time.system,
+            'Idle': time.idle
+        }
+        for freq in psutil.cpu_freq(percpu=True):
+            freqs.append(freq.current)
+        cpu_stats = {
+            'time': times,
+            'freq': freqs
+        }
+        sleep(0.1)
 
 
 def get_cpu_load():
     global cpu_load
-    cpu_load = psutil.cpu_percent(percpu=True)
+    while True:
+        cpu_load = psutil.cpu_percent(percpu=True)
+        sleep(0.1)
 
 
 def get_process_stats():
     global p_stats
     p_stats = []
-    for process in psutil.process_iter():
-        p_stats.append(process.as_dict(['pid', 'username', 'status',
-                                        'memory_percent', 'cpu_percent', 'name']))
-    p_stats = sorted(p_stats, key=lambda p: p['cpu_percent'], reverse=True)
+    while True:
+        for process in psutil.process_iter():
+            p_stats.append(process.as_dict(['pid', 'username', 'status',
+                                            'memory_percent', 'cpu_percent', 'name']))
+        p_stats = sorted(p_stats, key=lambda p: p['cpu_percent'], reverse=True)
+        sleep(0.1)
 
 
 def draw():
@@ -175,14 +185,14 @@ def draw():
 def main(stdscr):
     global win
     win = stdscr
+    Thread(target=get_cpu_load, args=[]).start()
+    Thread(target=get_cpu_stats, args=[]).start()
+    Thread(target=get_swp_usage, args=[]).start()
+    Thread(target=get_mem_usage, args=[]).start()
+    Thread(target=get_process_stats, args=[]).start()
     while True:
-        get_cpu_load()
-        get_cpu_stats()
-        get_swp_usage()
-        get_mem_usage()
-        get_process_stats()
+        sleep(10)
         draw()
-        sleep(1)
 
 
 if __name__ == '__main__':
