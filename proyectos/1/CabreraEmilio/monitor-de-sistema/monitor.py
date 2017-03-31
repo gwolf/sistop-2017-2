@@ -16,10 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from time import sleep
-from threading import *
+import threading
 import curses
 import psutil
 
+stop = False
 cpu_num = psutil.cpu_count(logical=False)
 cpu_load = ()
 cpu_stats = {}
@@ -29,8 +30,9 @@ uptime = ()
 p_stats = []
 show = ('cpu_load', 'mem_stats', 'swp_stats', 'cpu_stats', 'processes')
 mutexes = {}
-for i in show:
-    mutexes[i] = Semaphore(1)
+for j in show:
+    mutexes[j] = threading.Semaphore(1)
+
 
 def bytes2human(n):
     """
@@ -57,7 +59,7 @@ def bytes2human(n):
 
 def get_mem_usage():
     global mem_stats
-    while True:
+    while not stop:
         mutexes['mem_stats'].acquire()
         mem_stats = (
             bytes2human(psutil.virtual_memory().total),
@@ -70,7 +72,7 @@ def get_mem_usage():
 
 def get_swp_usage():
     global swp_stats
-    while True:
+    while not stop:
         mutexes['swp_stats'].acquire()
         swp_stats = (
             bytes2human(psutil.swap_memory().total),
@@ -83,12 +85,11 @@ def get_swp_usage():
 
 def get_cpu_stats():
     global cpu_stats
-    times = ()
-    freqs = []
-    while True:
+    while not stop:
         # for time in psutil.cpu_times_percent(percpu=True):
         #     times.append((time.user, time.system, time.idle))
         time = psutil.cpu_times_percent(percpu=False)
+        freqs = []
         times = {
             'User': time.user,
             'System': time.system,
@@ -107,7 +108,7 @@ def get_cpu_stats():
 
 def get_cpu_load():
     global cpu_load
-    while True:
+    while not stop:
         mutexes['cpu_load'].acquire()
         cpu_load = psutil.cpu_percent(percpu=True)
         mutexes['cpu_load'].release()
@@ -116,12 +117,13 @@ def get_cpu_load():
 
 def get_process_stats():
     global p_stats
-    while True:
+    while not stop:
         p_stats = []
         mutexes['processes'].acquire()
         for process in psutil.process_iter():
             p_stats.append(process.as_dict(['pid', 'username', 'status',
-                                            'memory_percent', 'cpu_percent', 'name']))
+                                            'memory_percent', 'cpu_percent',
+                                            'name']))
         p_stats = sorted(p_stats, key=lambda p: p['cpu_percent'], reverse=True)
         mutexes['processes'].release()
         sleep(0.1)
@@ -169,7 +171,7 @@ def draw():
         win.addstr(linenum, 1, usage_bar(percent, before, after))
         linenum += 1
     if 'cpu_stats' in show:
-        size = int((win.getmaxyx()[1] - 2) / 5)
+        size = int((win.getmaxyx()[1] - 6) / 5)
         mutexes['cpu_stats'].acquire()
         times = cpu_stats['time']
         freqs = cpu_stats['freq']
@@ -178,8 +180,8 @@ def draw():
         for n in times:
             win.addstr(linenum, i, "%s: %04.1f%%" % (n, times[n]))
             i += size
-        for n, m in enumerate(freqs):
-            win.addstr(linenum, i, "CPU%s: %.2f GHz" % (n + 1, freqs[n]/1000))
+        for n in range(len(freqs)):
+            win.addstr(linenum, i, "CPU%s: %03.1f GHz" % (n, freqs[n] / 1000))
             i += size
         linenum += 1
     if 'processes' in show:
@@ -204,17 +206,22 @@ def draw():
         mutexes['processes'].release()
     win.refresh()
 
+threads = [
+    threading.Thread(target=get_cpu_load, args=[]),
+    threading.Thread(target=get_cpu_stats, args=[]),
+    threading.Thread(target=get_swp_usage, args=[]),
+    threading.Thread(target=get_mem_usage, args=[]),
+    threading.Thread(target=get_process_stats, args=[]),
+]
+
 
 def main(stdscr):
     global win
     win = stdscr
-    Thread(target=get_cpu_load, args=[]).start()
-    Thread(target=get_cpu_stats, args=[]).start()
-    Thread(target=get_swp_usage, args=[]).start()
-    Thread(target=get_mem_usage, args=[]).start()
-    Thread(target=get_process_stats, args=[]).start()
+    for thread in threads:
+        thread.start()
     while True:
-        sleep(10)
+        sleep(1)
         draw()
 
 
@@ -222,4 +229,6 @@ if __name__ == '__main__':
     try:
         curses.wrapper(main)
     except (KeyboardInterrupt, SystemExit):
-        pass
+        stop = True
+        for thread in threads:
+            thread.join()
