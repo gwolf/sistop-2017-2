@@ -56,7 +56,7 @@ def HDD():
   print(Style.BRIGHT + Fore.YELLOW + Back.BLACK +"********HDD********\n")
   print(Style.NORMAL + Fore.YELLOW + Back.BLACK)
   os.system("du -h") #Descubre archivos mas grandes del sistema
-  #os.system("tree") #Mostrar los ficheros y carpetas en forma de arbol comenzando por la raiz.NO lo consegui hacer funcionar o parece que en mi maquina no funciono xD
+  os.system("tree") 
   semaforo.release()
   
 def MEMORIA():
@@ -67,7 +67,7 @@ def MEMORIA():
   print(Style.NORMAL + Fore.BLUE + Back.WHITE)
   os.system("free") #Se visualiza la cantidad total de memoria libre, la memoria fisica utilizada y el intercambio en el sistema
   print("\n")
-  os.system("cat /proc/meminfo") #Verificar el uso de memoria
+  os.system("cat /proc/meminfo") 
   semaforo.release()
 
 def MEMORIA_INTERFAZ():
@@ -140,11 +140,29 @@ def COMMAND(opcion):
     muzak.start()
   elif (opcion == "help"):
     print("\n********Escriba la opción que quiera ejecutar********\n")
+  elif(opcion == "todo"):
+    MUZAK()
   elif (opcion == "exit"):
     print("ADIOS :V")
     thr = thr + 1
   else:
    print("Opcion invalida\n")
+
+
+def MUZAK(): #Aqui corremos todo y vemos que realmente los semaforos y su implementación concurrente funcionan
+  muzak0 = threading.Thread(target = SISTEMA)
+  SISTEMA_INTERFAZ()
+  muzak0.start()
+  muzak1 = threading.Thread(target = HDD)
+  muzak1.start()
+  muzak2 = threading.Thread(target = MEMORIA)
+  MEMORIA_INTERFAZ()
+  muzak2.start()
+  muzak3 = threading.Thread(target = PROCESOS)
+  muzak3.start
+  muzak4 =threading.Thread(target = CPU)
+  CPU_INTERFAZ()
+  muzak4.start()
 
 
 
@@ -164,7 +182,8 @@ def MONITOR():
       print("\t-sistema\t-disco\n")
       print("\t-memoria\tcpu\n")
       print("\t-procesos\t-help\n")
-      print("\t-limpiar\t-exit")
+      print("\t-limpiar\t-todo\n")
+      print("\t-salir\n")
       print("\n")
       opcion = input("Comando@@: ")
       #print(Style.RESET_ALL)
