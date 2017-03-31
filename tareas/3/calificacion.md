@@ -3,21 +3,52 @@
 ## Entregas en tiempo (_t_ ≤ 21.03.2017)
 
 ### Isaac Cruz y Afferny Ramírez
+* **Problema a resolver:** El cruce del río
 * **Archivos:**
-  []()
-* **Calificación:**
-* **Comentarios:**
+  [CruceRio.py](./CruzIsaacRamirezAfferny/CruceRio.py),
+  [CruceRioDoc.md](./CruzIsaacRamirezAfferny/CruceRioDoc.md)
+* **Lenguaje:** Python
+* **Calificación:** 10
+* **Comentarios:** 
+  * Solución limpia y fácil de comprender; el nivel de comentarios en
+    el código es justo y ayuda bien a la comprensión. ¡Bien!
+      * Ojo, Isaac: El comentario en la línea 46 parece haber llegado
+        para quitarte méritos ;-)
+  * Emplearon la bibliografía y tal vez tomaron parte de su lógica,
+    pero se ve que la implementación es propia. ¡Muy bien!
+  * La ejecución es limpia y correcta; llama mi atención que generan
+    un escenario asimétrico (48 desarrolladores, 32 linuxeros y 16
+    windowseros). Todo bien, sólo es curioso ver el balance de fuerzas
+    ;-)
 
 ### Iván Hernández
+* **Problema a resolver:** Gatos y ratones
 * **Archivos:**
-  []()
-* **Calificación:**
+  [gatos.rb](./HernandezIvan/gatos.rb),
+  [documentoGatos.txt](./HernandezIvan/documentoGatos.txt),
+* **Lenguaje:** Ruby
+* **Calificación:** 5
 * **Comentarios:**
+    * Lo que envías es un acercamiento a cómo sincronizar a cien gatos
+      para que sólo uno coma a la vez (y no el problema planteado)
+    * Generas a los 100 gatos como hilos independientes... Pero _no se
+      mantienen vivos_ como hilos
+        * Cada instancia de `Gato` se limita a imprimir dos líneas de
+          texto, y termina
+        * No instancias ningún objeto de la clase `Platos`, y sólo uno
+          de la clase `Raton`; tu `Raton` no llega siquiera a imprimir
+          una línea en pantalla porque el hilo principal termina
+          inmediatamente tras haberlo creado (recuerda que Ruby
+          termina la ejecución al terminar la del hilo principal)
+        * La documentación... Está escrita a las carreras, explica
+          sólo la _intención_ de solución, pero no se refleja en el código
 
 ### Servando López
+* **Problema a resolver:** El cruce del río
 * **Archivos:**
-  [desa.py](./LopezFernandezServandoMiguel/desa.py)
+  [desa.py](./LopezFernandezServandoMiguel/desa.py),
   [desa_version2.py](./LopezFernandezServandoMiguel/desa_version2.py)
+* **Lenguaje:** Python
 * **Calificación:** 7.5
 * **Comentarios:**
   * Haces un buen trabajo de control de acciones basado en cómo van
@@ -70,10 +101,35 @@
 		cerrado :-(
 
 ### Julio Rodríguez
+* **Problema a resolver:** El profesor y los alumnos
 * **Archivos:**
-  []()
-* **Calificación:**
+  [Tarea3-1.txt](./RodriguezJulio/Tarea3-1.txt) (documentación),
+  [Tarea3.txt](./RodriguezJulio/Tarea3.txt) (código)
+* **Lenguaje:** Ruby
+* **Calificación:** 2.5
 * **Comentarios:**
+    * ¿Resolver un problema en un lenguaje que no conoces? ¡Dos
+      problemas por el precio de uno!
+        * Puedo asegurarte que el código no funcionó ni una vez: Copiaste
+          el nombre del módulo `yaml` como `yam1`, eso no compila
+            * ¿Y para qué requieres `yaml`? No tiene relación con el
+              problema en cuestión
+        * Las clases en Ruby _deben_ iniciar en mayúscula
+        * Tienes algunos bloques `class` que no cerraste con `end`
+    * Y aterrizando más a la resolución del problema, incluso si lo
+      entiendo ver como pseudocódigo...
+        * Los `Alumno`s no emplean ningún mecanismo de
+          sincronización. Claramente, no está terminada su
+          implementación (sólo saben "nacer" y tocar la puerta).
+        * Veo que tienes idea _correcta_ de cómo manejar varios de los
+          mecanismos que buscabas emplear... Pero no lo hiciste. ¿Te
+          faltó tiempo? ¿Incluso con la extensión de dos días que te
+          di? :-(
+        * Nada de comentarios que me intenten explicar lo que
+          intentaste aplicar
+    * La documentación debe llevar un grado mínimo de
+      cuidado... Documentar con faltas de ortografía, _dedazos_
+      obvios, etc. desmerece al esfuerzo de crear la documentación.
 
 ## Entregas extemporáneas (21.03.2017 < _t_ ≤ 28.03.2017)
 
