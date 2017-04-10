@@ -1,0 +1,18 @@
+Alumno: Arizmendi Barriga Jose Antonio
+Lenguaje: Python 2.7
+
+La ejecucion se lleva a cabo mediante el comando en terminal "python MonitorDeSistema1.py"
+
+Este programa tiene como fin hacer la funcion de un monitor de recursos, empleando para ello semaforos como señalizacion.
+Cuenta con 3 opciones a elegir, las cuales son:
+ 
+1. Version del Sistema.
+2. Estadisticas de la memoria.
+3. Modelo y caracteristicas del procesador.
+
+y ademas una opcion adicional para salir de ejecución:
+
+4. Salir
+
+Cada opcion se muestra durante un lapso de 20 segundos, interrumpibles mediante la combinacion de teclas "ctrl+c", antes
+de volver al menu principal.
