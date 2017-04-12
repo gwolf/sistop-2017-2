@@ -10,7 +10,7 @@ global num_hlos
 global contador
 global mutex
 global barrera
-#Varables para crear barrera y sncronzar los hlos
+#Varables para crear barrera y sincronzar los hlos
 num_hlos = 4
 contador = 0
 mutex = threading.Semaphore(1)
@@ -27,17 +27,26 @@ def sizeof_fmt(num, suffix='B'):
 #funcion que obtiene la informacion de los ultmos procesos en ejecucon
 def procs(size):
 	lstproc = psutil.pids()
-	lstproc.reverse() 
-	for x in xrange(0,size):
+	lstproc.reverse()
 
+
+	for x in xrange(0,size):
+		
 		myscreen.addstr(10+x, 2,"%d "%lstproc[x])
-		myscreen.addstr(10+x, 8,psutil.Process(lstproc[x]).name())
-		myscreen.addstr(10+x, 22,psutil.Process(lstproc[x]).status())
-		myscreen.addstr(10+x, 35,"%d "%psutil.Process(lstproc[x]).num_threads())
-		myscreen.addstr(10+x, 43,psutil.Process(lstproc[x]).username())
+		
+		myscreen.addstr(10+x, 8,psutil.Process(lstproc[x]).name()+"         ")
+		
+		myscreen.addstr(10+x, 22,psutil.Process(lstproc[x]).status()+"  ")
+		
+		myscreen.addstr(10+x, 35,"%d   "%psutil.Process(lstproc[x]).num_threads())
+		
+		myscreen.addstr(10+x, 43,psutil.Process(lstproc[x]).username()+"      ")
+		
 		myscreen.addstr(10+x, 53,"%.2f"%psutil.Process(lstproc[x]).cpu_percent(interval=0))
-		myscreen.addstr(10+x, 63,sizeof_fmt(psutil.Process(lstproc[x]).memory_info().rss))
-	sync()
+		
+		myscreen.addstr(10+x, 63,sizeof_fmt(psutil.Process(lstproc[x]).memory_info().rss)+"    ")
+
+sync()
 
 #funcion para la inicalizacion de la barrera
 def sync():
@@ -57,8 +66,12 @@ def percentBar(source,y):
 	percent = int(round(source/2))
 	for i in range(0,percent):
 		myscreen.addstr(y,i+18," ",curses.A_STANDOUT)
-	myscreen.addstr(y,18+size,"| %d %%"%source)
-	
+	for i in range(percent,size):
+		myscreen.addstr(y,i+18," ")
+	if source<10:
+		myscreen.addstr(y,18+size,"| 0%d %%"%source)
+	else:
+		myscreen.addstr(y,18+size,"| %d %%"%source)
 	myscreen.refresh()
 	
 	sync()
