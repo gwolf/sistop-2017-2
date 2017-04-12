@@ -1,6 +1,8 @@
 from subprocess import call, getoutput
 from threading import Semaphore
 
+
+# Clase encargada de recaudar informacion de los procesos corriendo
 class Processes():
 
 	names = ['USER', 'PID', '%CPU', r'%MEM', 'VCZ', 'RSS', 'TTY', 'STAT', 'START', 'TIME', 'COMMAND']
@@ -12,7 +14,7 @@ class Processes():
 		self.signal = Semaphore(0)
 		self.mutex = Semaphore(1)
 
-
+	# trae informacion de los procesos por medio del comando ps aux, lo guarda en una lista
 	def pull_processes_list(self):
 		self.list_processes = []
 		first_line = True
@@ -26,6 +28,10 @@ class Processes():
 					self.list_processes.append(line.strip().split(None, 10))
 				else:
 					first_line = False
+		
+		# se utiliza una señal para informar que la informacion a sido actualizada y puede ser 
+		# devuelta en el metodo get_list_process, asi se obliga a primero actualizar la info
+		# para despues consultarla
 		self.signal.release()
 
 
@@ -37,7 +43,7 @@ class Processes():
 		return self.list_processes
 		
 
-
+# Clase encargada de recaudar informacion de la memoria
 class Memory():
 
 	def __init__(self):
@@ -47,6 +53,7 @@ class Memory():
 		self.mutex = Semaphore(1)
 		self.signal = Semaphore(0)
 
+	# Obtiene info de memoria meidante archivos del sistema ubicados en el directorio proc
 	def pull_mem_stats(self):
 		self.mutex.acquire()
 		
@@ -54,14 +61,19 @@ class Memory():
 		self.free_mem = float(getoutput('grep MemFree /proc/meminfo').split(None)[1])
 		self.available_mem = float(getoutput('grep MemAvailable /proc/meminfo').split(None)[1])
 		self.used_mem = self.tot_mem - self.free_mem
+
+		# se utiliza una señal para informar que la informacion a sido actualizada y puede ser 
+		# devuelta en el metodo get_total, asi se obliga a primero actualizar la info
+		# para despues consultarla
 		self.signal.release()
 		self.mutex.release()
 
+	# devuelve memoria total en una cadena con formato
 	def get_total(self):
 		self.signal.acquire()
 		return '{}'.format(self.human_size(self.tot_mem))
 		
-
+	#este y los siguientes metodos get devuelven el porcentaje de memoria libre, usada, y disponible
 	def get_porcent_free(self):
 		s = ''
 		p = (self.free_mem * 100) / self.tot_mem
@@ -82,6 +94,7 @@ class Memory():
 		s = '{}    {:.2f}%'.format(self.human_size(self.available_mem), p)
 		return s
 
+	# transforma tamaño de mb a lo que corresponda para que sea mas legible
 	def human_size(self, size):
 		SUFFIXES = [ 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
 
@@ -91,7 +104,8 @@ class Memory():
 				return '{0:.1f} {1}'.format(size, e)
 
 
-
+# Clase encargada de recaudar informacion del procesador, 
+# esta informacion es obtenida por medio de archivos de sistema
 class Processor():
 
 	def __init__(self):

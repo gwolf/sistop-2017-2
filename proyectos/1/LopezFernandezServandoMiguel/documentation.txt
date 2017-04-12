@@ -1,0 +1,39 @@
+Autor: López Fernández Servando Miguel
+
+Problema: Realizar un monitor de sistema, a gusto del programador 
+            pensando en que es lo que quisieras tener en un monitor
+            de sistema.
+            
+
+
+Proyecto monitor de sistema, creado con python3 y Gtk3.0, el S.O. objetivo es cualquier GNU/Linux.
+
+Se debe correr con python 3, el que sea, y con Gtk 3.
+
+Para correr el programa se debe ejecutar la siguiente orden y 
+lo siguiente es magia : )
+
+    python3 monitor_system.py
+
+
+El archivo monitor_system.py es el encargado de conectar la interfaz gráfica
+con el modelo de datos, la interfaz grafica esta diseñada en glade. En
+este mismo archivo se encuentra la lógica de actualización de datos, se 
+implemento por medio de un hilo del modulo GObjecto, que actualiza mientras 
+una la cual se le pasa como parametro devuelva True.
+
+La lógica de los datos esta en el archivo gathering_information.py, ahí se 
+encuentran clases, cada una se encarga de generar información acorde 
+a su nombre, en cada clase hay directivas de sincronización a razon de implementar hilos.
+
+
+No se usaron hilos desde python3 para actualizar la interfaz de Gtk porque Gtk no soporta hilos 
+externos para manejar su interfaz gráfica, si lo intentas mascar error de segmentación.
+
+Para hacer el software lo mas universal posible solo se uso un programa 
+para obtener información y es uno que viene por defecto en linux, esto 
+en el caso de los procesos, el programa es ps.
+
+
+Para los demas casos se utilizaron archivos del sistema, que se encuentran en el directorio proc. 
+
