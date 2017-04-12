@@ -26,14 +26,10 @@ El primer proyecto consistía en la programación de un monitor de procesos. Esc
 Idea Original:
 ![Idea Original](https://raw.githubusercontent.com/Scr3amind/sistop-2017-2/master/proyectos/1/CruzIsaacRamirezAfferny/Idea.jpg)
 Proyecto terminado:
-![
-
-> enter image description here
-
-](http://i.imgur.com/JgbrI2E.png)
+![enter image description here](http://i.imgur.com/JgbrI2E.png)
 Referencias:
->*Gunnar Wolf*, Fundamentos de Sistemas Operativos
->*http://pythonhosted.org/psutil/
+>*Gunnar Wolf*, Fundamentos de Sistemas Operativos,
+>http://pythonhosted.org/psutil/
 
 Repositorio donde trabajamos:
 >https://github.com/Scr3amind/Proyecto-1-Sistop
