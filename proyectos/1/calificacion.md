@@ -82,20 +82,13 @@
   (`main_window.py`,`main_window1.py`,`main_window2.py`), y varios
   recursos gráficos
 * **Comentarios:** 
-  * ¡Excelente desarrollo! Es una lástima que no incluyera _nada_ de
-    documentación ni de comentarios. ¡Merecías mucho mejor
-    calificación!
-  * Veo que incluyes versiones parciales de tu código. ¡Pero si para
-    eso está Git! Si hubieras desarrollado tu programa sobre de tu
-    primer `main_window.py` (en vez de dejarlo _de costadito_)
-    tendrías los commits necesarios para ese punto completo
-      * Además, vendría muy bien que usaras un `.gitignore` — Tu
-        proyecto incluye un archivo temporal autogenerado `data.txt`,
-        que podría darle a alguien hostil información acerca de tu
-        sistema. Y cada vez que yo lo ejecuto, me marca que el árbol
-        Git está *sucio*, pues este archivo se modifica.
-      * También el directorio `__pycache__` completo debería estar en
-        `.gitignore`
+  * ¡Excelente desarrollo! Y dado que lo comentamos en clase por un
+    par de errores de manejo de Git, acepto tu entrega extemporánea de
+    documentación como entrega en tiempo.
+      * Considero para esto lo relativo a la documentación, no los
+        comentarios y el manejo del árbol Git (que no fueron escritos
+        como parte del proceso de desarrollo sino como respuesta a la
+        evaluación recibida).
   * En `generate_cpu_info()`, asumes que tu CPU será Intel o AMD. Si
     corro tu programa en mi ARM me va a decir que es un AMD. Está
     bien, es sólo *eye candy*, pero le das mucho *protagonismo* a un
@@ -115,9 +108,9 @@
       * Creatividad: 10
       * Complejidad: 10
       * Interfaz usuario: 10
-  * *Documentación:* 1.66
-      * Documentación externa: 0
-      * Entorno y dependencias: 5
+  * *Documentación:* 6.66
+      * Documentación externa: 10
+      * Entorno y dependencias: 10
       * Comentarios: 0
   * *Entrega:* 7.5
       * Historia en Git: 5
@@ -126,36 +119,107 @@
   * *Concurrencia:* 8.75
       * Multiproceso: 10
       * Sincronización: 7.5
-  * **Global:** 7.6
+  * **Global:** 8.6
 
 ## Entregas extemporáneas (30.03.2017 < _t_ ≤ 06.04.2017)
 
 ### Antonio Arizmendi
-* **Lenguaje:**
-* **Sincronización empleada para:** 
+* **Lenguaje:** Python
+* **Sincronización empleada para:** Señalización: Indica que una
+  función terminó su ejecución. Resulta innecsario (pues no maneja
+  múltiples hilos/procesos)
 * **Archivos:**
+  [Documentación](./ArizmendiAntonio/InformacionDePrograma.txt),
+  [Programa](./ArizmendiAntonio/MonitorDeSistema1.py)
 * **Comentarios:**
+    * ¡Obtienes datos de forma muy subóptima!
+        * Si únicamente vas a leer un archivo (como en tu línea 11),
+          en vez de llamar a `cat` con ese archivo, es muy preferible
+          usar `open` (directamente desde Python, evitando tu uso de
+          `commands.getoutput`)
+        * Piensa en la cantidad de procesos que tu prograba tiene que
+          lanzar entre las líneas 23 y 27, o entre 51 y 54 — ¡Cuatro
+          ejecuciones de procesos por línea!
+        * Ahora, a pesar de todo: La forma en que lo haces es
+          ingeniosa, y muestra que buscaste una manera _simple_ de
+          procesar un archivo de texto. Como sea, va un ejemplo de
+          cómo reemplazar las líneas 23-27 directamente en Python:
+
+				import re
+				data = {}
+			    f = open('/proc/meminfo', 'r')
+				for line in f.readlines():
+				    m = re.match('(MemTotal|MemFree|MemAvailable|SwapTotal|SwapFree): *(\d+) ', line)
+					if m:
+					     data[m.group(1)] = m.group(2)
+
+		  Sí, estoy usando las artes obscuras de las expresiones
+          regulares (el módulo `re`). Pero con esta expresión obtengo
+          en `data` un diccionario con la información tal como la
+          requieres:
+
+				{'MemAvailable': '2222208', 'SwapTotal': '3813372', 'MemFree': '450340', 'MemTotal': '5928484', 'SwapFree': '3684008'}
+
+				    
 * **Calificación:**
-  * *Requisitos:* 
-      * Cumplimiento: 
-  * *Proyecto:* 
-      * Creatividad: 
-      * Complejidad: 
-      * Interfaz usuario: 
-  * *Documentación:* 
-      * Documentación externa: 
-      * Entorno y dependencias: 
-      * Comentarios: 
-  * *Entrega:* 
-      * Historia en Git: 
-      * Directorio de proyecto: 
-      * Código válido: 
-  * *Concurrencia:* 
-      * Multiproceso: 
-      * Sincronización: 
-  * **Global:** 
+  * *Requisitos:* 10
+      * Cumplimiento: 10
+  * *Proyecto:* 8.33
+      * Creatividad: 5
+      * Complejidad: 10
+      * Interfaz usuario: 10
+  * *Documentación:* 7.5
+      * Documentación externa: 7.5
+      * Entorno y dependencias: 5
+      * Comentarios: 10
+  * *Entrega:* 8.33
+      * Historia en Git: 5
+      * Directorio de proyecto: 10
+      * Código válido: 10
+  * *Concurrencia:* 3.75
+      * Multiproceso: 0
+      * Sincronización: 7.5
+  * **Global:** 7.58 × 0.8 = 6.06
 
 ### Emilio Cabrera
+* **Lenguaje:** Python
+* **Sincronización empleada para:** 
+* **Archivos:**
+  [Documentación](./CabreraEmilio/monitor-de-sistema/README.md),
+  [Programa](./CabreraEmilio/monitor-de-sistema/monitor),
+* **Comentarios:**
+    * Umh, me llama la atención en tu documentación, mencionas:
+        *  Python <= 3.6... Pero te aseguro que esto no funciona con
+           Python 2.x
+        *  psutil >= 3.2.1... Pero usas `psutil.cpu_freq`, que
+           [dice la documentación](https://pythonhosted.org/psutil/)
+           que apareció en 5.1.0 (y, ¡calamidad! en Debian Testing
+           tenemos únicamente 5.0.0). Tuve que comentar tu llamada a
+           esta función.
+    *  No hay comentario alguno ☹
+* **Calificación:**
+  * *Requisitos:* 10
+      * Cumplimiento: 10
+  * *Proyecto:* 10
+      * Creatividad: 10
+      * Complejidad: 10
+      * Interfaz usuario: 10
+  * *Documentación:* 6.66
+      * Documentación externa: 10
+      * Entorno y dependencias: 10
+      * Comentarios: 0
+  * *Entrega:* 9.16
+      * Historia en Git: 10
+      * Directorio de proyecto: 10
+      * Código válido: 7.5
+  * *Concurrencia:* 7.5
+      * Multiproceso: 10
+      * Sincronización: 5
+  * **Global:** 8.66 × 0.8 = 6.93
+
+## Entregas _muy_ extemporáneas (06.04.2017 < _t_ ≤ 20.04.2017)
+
+### Isaac Cruz y Afferny Ramírez
 * **Lenguaje:**
 * **Sincronización empleada para:** 
 * **Archivos:**
@@ -180,6 +244,29 @@
       * Sincronización: 
   * **Global:** 
 
-## Entregas _muy_ extemporáneas (06.04.2017 < _t_ ≤ 20.04.2017)
+### Jesús Rivera
+* **Lenguaje:**
+* **Sincronización empleada para:** 
+* **Archivos:**
+* **Comentarios:**
+* **Calificación:**
+  * *Requisitos:* 
+      * Cumplimiento: 
+  * *Proyecto:* 
+      * Creatividad: 
+      * Complejidad: 
+      * Interfaz usuario: 
+  * *Documentación:* 
+      * Documentación externa: 
+      * Entorno y dependencias: 
+      * Comentarios: 
+  * *Entrega:* 
+      * Historia en Git: 
+      * Directorio de proyecto: 
+      * Código válido: 
+  * *Concurrencia:* 
+      * Multiproceso: 
+      * Sincronización: 
+  * **Global:** 
 
 ## Pasado el 20.04.2017 *no se recibe el proyecto*

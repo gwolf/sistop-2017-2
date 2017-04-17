@@ -78,7 +78,7 @@ class MainWindow():
 		#self.searchentry.connect('search-changed', self.to_filter )
 		self.window.connect('delete-event', Gtk.main_quit)
 
-
+	# funcio que actualiza la interfaz grafica
 	def activo(self):
 		
 		if self.switch.get_state():
@@ -92,6 +92,7 @@ class MainWindow():
 					self.update_memory()
 
 		return True
+
 
 	def kill_action(self, widget):
 
@@ -197,7 +198,8 @@ class MainWindow():
 		self.label_free.set_text(self.memory.get_porcent_free())
 
 
-		
+	# revisa si se selecciono algo en los procesos , si asi es pone el process id en la 
+	# text box 
 	def on_tree_selection_changed(self, selection):
 		model, treeiter = selection.get_selected()
 		if treeiter != None:
@@ -240,6 +242,6 @@ class MainWindow():
 
 
 
-	
+# punto de entrada al programa
 if __name__ == '__main__':
 	w = MainWindow()
