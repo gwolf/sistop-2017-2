@@ -219,54 +219,128 @@
 
 ## Entregas _muy_ extemporáneas (06.04.2017 < _t_ ≤ 20.04.2017)
 
-### Isaac Cruz y Afferny Ramírez
-* **Lenguaje:**
+### Octavio Alatorre
+* **Lenguaje:** Java
 * **Sincronización empleada para:** 
+    * Métodos `synchronized` de Java (Mutex)
 * **Archivos:**
+  [Documentación](./AlatorreOctavio/documentacion.txt),
+  [Programa](./AlatorreOctavio/ProjectTest/src/projecttest/Monitor.java)
 * **Comentarios:**
+    * No logré hacer que compilara... Así que limito mi análisis a lo
+      que puedo ver de tu código
+        * Claro, siendo Java... Me espera un trabajo largo ;-)
+    * A pesar de que usas Java (lenguaje multiplataforma) y Sigar
+      (obtención portable de información de sistema), estás
+      "amarrando" tu código a sólo funcionar desde sistemas Windows:
+      Tu línea 129 llama a `sigar.getFileSystemUsage("C:")`. En vez de
+      incluir en "duro" a `C:`, podrías haber elegido alguna partición
+      de `sigar.df`
+    * ¿La concurrencia se limita a crear tres hilos que irán haciendo
+      lo mismo (mostrar los valores obtenidos) y durmiendo un tiempo
+      aleatorio?
 * **Calificación:**
-  * *Requisitos:* 
-      * Cumplimiento: 
-  * *Proyecto:* 
-      * Creatividad: 
-      * Complejidad: 
-      * Interfaz usuario: 
-  * *Documentación:* 
-      * Documentación externa: 
-      * Entorno y dependencias: 
-      * Comentarios: 
-  * *Entrega:* 
-      * Historia en Git: 
-      * Directorio de proyecto: 
-      * Código válido: 
-  * *Concurrencia:* 
-      * Multiproceso: 
-      * Sincronización: 
-  * **Global:** 
+  * *Requisitos:* 10
+      * Cumplimiento: 10
+  * *Proyecto:* 7.5
+      * Creatividad: 7.5
+      * Complejidad: 10
+      * Interfaz usuario: 5
+  * *Documentación:* 10
+      * Documentación externa: 10
+      * Entorno y dependencias: 10
+      * Comentarios: 10
+  * *Entrega:* 5
+      * Historia en Git: 5
+      * Directorio de proyecto: 5
+      * Código válido: 5
+  * *Concurrencia:* 7.5
+      * Multiproceso: 7.5
+      * Sincronización: 7.5
+  * **Global:** 8 × 0.5 = 4
+
+### Isaac Cruz y Afferny Ramírez
+* **Lenguaje:** Python
+* **Sincronización empleada para:**
+  * Barrera, para que todos los elementos de la interfaz se actualicen
+    a la vez
+* **Archivos:**
+  [Documentación](./CruzIsaacRamirezAfferny/README.md)
+  [Programa](./CruzIsaacRamirezAfferny/monitor.py)
+* **Comentarios:**
+  * Muy buen programa... Lástima que lo entregaran tan tarde y la
+    calificación bajara tanto :-(
+  * Respecto al comentario final en la documentación (que habla de la
+    sensible muerte de la laptop de Afferny), de acuerdo: Tomo los
+    commits del repositorio que mencionan por buenos. Sin embargo,
+    podrían haber llevado el desarrollo dentro del directorio
+    `proyectos/1/CruzIsaacRamirezAfferny` del repositorio común. ¡Para
+    eso está!
+  * Al lanzar el programa, me indica un error porque hacen una llamada
+    a la función `sync()` antes de definirla:
+
+		Traceback (most recent call last):
+		  File "monitor.py", line 49, in <module>
+		    sync()
+		NameError: name 'sync' is not defined
+
+	Basta comentar esa llamada para que el programa funcione.
+  * El programa funciona mayormente bien, y tiene una interfaz bien
+    lograda. Pero por alguna razón, de rato en rato (después de unos
+    10-30 segundos) se muere de formas bastante bizarras (desde
+    simples "segmentation faults" hasta errores de `curses`). No
+    encuentro ninguna razón obvia de este error...
+
+* **Calificación:**
+  * *Requisitos:* 10
+      * Cumplimiento: 10
+  * *Proyecto:* 9.16
+      * Creatividad: 7.5
+      * Complejidad: 10
+      * Interfaz usuario: 10
+  * *Documentación:* 9.16
+      * Documentación externa: 10
+      * Entorno y dependencias: 10
+      * Comentarios: 7.5
+  * *Entrega:* 9.16
+      * Historia en Git: 10
+      * Directorio de proyecto: 10
+      * Código válido: 7.5
+  * *Concurrencia:* 8.75
+      * Multiproceso: 7.5
+      * Sincronización: 10
+  * **Global:** 9.24 × 0.5 = 4.62
 
 ### Jesús Rivera
-* **Lenguaje:**
-* **Sincronización empleada para:** 
+* **Lenguaje:** Python
+* **Sincronización empleada para:** No se emplea; se ve que buscaba
+  hacerlo, pero la función `main()` (desde donde crearía a todos los
+  hilos) está comentada ☹
 * **Archivos:**
+  [Documentación](./RiveraJesus/README.md),
+  [Programa](./RiveraJesus/monitor.py)
 * **Comentarios:**
+  * El proyecto se veía de lo más pulido y bonito... Pero se ve que
+    tuviste problemas para terminarlo en un tiempo incluso cercano al
+    máximo
 * **Calificación:**
-  * *Requisitos:* 
-      * Cumplimiento: 
-  * *Proyecto:* 
-      * Creatividad: 
-      * Complejidad: 
-      * Interfaz usuario: 
-  * *Documentación:* 
-      * Documentación externa: 
-      * Entorno y dependencias: 
-      * Comentarios: 
-  * *Entrega:* 
-      * Historia en Git: 
-      * Directorio de proyecto: 
-      * Código válido: 
-  * *Concurrencia:* 
-      * Multiproceso: 
-      * Sincronización: 
-  * **Global:** 
+  * *Requisitos:* 5
+      * Cumplimiento: 5
+  * *Proyecto:* 9.16
+      * Creatividad: 7.5
+      * Complejidad: 10
+      * Interfaz usuario: 10
+  * *Documentación:* 8.33
+      * Documentación externa: 10
+      * Entorno y dependencias: 10
+      * Comentarios: 5
+  * *Entrega:* 8.33
+      * Historia en Git: 5
+      * Directorio de proyecto: 10
+      * Código válido: 10
+  * *Concurrencia:* 0
+      * Multiproceso: 0
+      * Sincronización: 0
+  * **Global:** 6.16 × 0.5 = 3.1
 
 ## Pasado el 20.04.2017 *no se recibe el proyecto*
