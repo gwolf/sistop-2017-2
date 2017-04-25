@@ -1,0 +1,29 @@
+Proyecto 1 - "Monitor de recursos de sistema"
+
+Alatorre Vela Octavio E.
+
+Planteamiento:
+
+El punto de este proyecto es crear un monitor de recursos que se valga de hilos o multiprocesos, para generar concurrencia
+con la cual se deba lidiar via medidas de sincronización.
+
+Resolución:
+
+Dado que llevo aprendiendo a programar la semana pasada, use java pese a no agradarme por la familiaridad que tengo y porque
+tiene varias facilidades muy buenas para manejar hilos. Para monitorear recursos busque varias formas y elegí usar una biblioteca
+llamada Sigar. Se pueden llamar esos metodos e imprimir los resultados con simples print asi que cree hilos quecaen en cualquiera
+de los metodos para monitorear segun como vayan ejecutandose. Hay 3 hilos que recorren los mismos metodos y segun su orden de
+llegada imprimen la consulta que se solicito, y el arte esta en no dejar que esos hilos entren en desorden y causen estragos.
+
+Para ello me valí de semaforos y el peculiar wait() que tiene java; este metodo implementa un "pseudo sleep" en el que el hilo
+puede despertar en un momento determinado, a diferencia que si usamos sleep() que lo duerme por el tiempo que le indiquemos y
+nada mas que agotar el tiempo lo despertara. Lamentablemente mi manejo de hilos aun es muy pobre y termine implementando un
+metodo que duerme los hilos un tiempo aleatorio, sin esto falla y no puedo comprender el por que, aunque me huele a que estoy
+fallando en alguna concurrencia porque el fatal error me despliega direcciones de memoria y me dice que hubo un error ahi.
+Debe ser redundante el usar sleep cuando mi semaforo se vale de wait() para no dejar entrar, no se si implemente mal el sema
+foro o los hilos pero se me acabo el tiempo hoy para seguir indagando y no llegue a solucionar esa cuestion.
+
+No hay mucho mas que comentar el programa hace 3 consultas de uso de ram, CPU y HDD una por cada hilo, y termina. En cuanto a
+invocar y correr el programa use el IDE NetBeans, por lo que solo aprieto el boton run y se ejecuta. Adjunto a la carpeta de
+proyecto esta la libreria Sigar la pongo porque creo que para compilar y correr en otras computadoras necesita importarla como
+archivo al IDE.
