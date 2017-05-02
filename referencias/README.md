@@ -11,3 +11,4 @@ Por navegabilidad, generaré un archivo de referencias por cada "gran tema".
 3. [Administración de procesos](./3.administracion_de_procesos.md)
 4. [Planificación de procesos](./4.planificacion_de_procesos.md)
 5. [Administración de memoria](./5.administracion_de_memoria.md)
+6. [Administración de archivos](./6.administracion_de_archivos.md)
