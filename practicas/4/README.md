@@ -12,3 +12,8 @@ los 5 y 6 marcos.
 El primer _pull request_ que reciba con una respuesta correcta tendrá
 un 10, el segundo en adelante tendrán un 8, _únicamente hasta la fecha
 indicada_.
+
+## Entregas
+
+- Primera entregada: Afferny Ramírez
+- Otras entregas válidas: Ivan Hernández, Isaac Cruz
