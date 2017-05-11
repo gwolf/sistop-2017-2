@@ -1,0 +1,42 @@
+Nombre: Hernández García Ivan Alejandro
+Grupo de sistemas operativos.
+
+En este proyecto se intenta programar un monitor de sistema operativo donde los procesos que se analizan son multihilos y 
+bueno deben cuidarse al ser tratados, porque, por ejemplo
+al revisar los procesos en memoria o en disco lo que se revisa se debe cuidar que no sea modificado durante la revisión, 
+razón por la cual se le agrega los semaforos,con los otros procesos sucede igual pero con el más obvio (creo yo)
+sería el de los procesos ya que  durante la ejecuación del programa pueden 
+haberse creado o no, o destruido nuevos y bueno 
+se tiene que cuidar eso y ser tratado como tal.
+Por ejemplo:
+En la función PROCESOS() vemos que el semaforo se adquiere antes de que se mande  a llamar la instrucción os.system("ps") 
+esto es porque si hicieramos esto sin semaforo puede haber concurrencia y haber o saltar algun error 
+(más que error) puede suceder que los procesos cambien cuando se manda a llar ya que no hay algo que proteja  
+esa información que solicitamos.
+
+Bien, este programa fue hecho en Ubuntu 16.04 lts en el lenguaje de Python 3 
+
+Use varios modulos, sin embargo solo se requiere instalar un modulo externo, este modulo se llama "Colorama" y fue 
+el que me ayudo con los colores y ayudarme en la posición del texto.
+
+Para instalar el módulo Colorama:
+
+$ pip3 install colorama                  
+
+Liga de apoyo en la que me base http://python-para-impacientes.blogspot.mx/2016/09/dar-color-las-salidas-en-la-consola.html
+
+Una vez instalado este modulo puede, ojo, puede (ojo esto es que quizás se tenga suerte y corra a la primera) que al ejecutar 
+el programa que se llama "Monitor1.py"  de algunos problemas, es un error que se llama o se muestra como "Bad magic number" 
+y bueno siendo sincero me base en esta pagina donde detalla muy bonito que pasa y como solucionarlo y 
+el porque http://stackoverflow.com/questions/514371/whats-the-bad-magic-number-error 
+pero dejando de lado eso para solucionarlo es bastante simple, si se nos genera un archivo .pyc (distinto a los de python que son .py)
+solamente tenemos que borrar este archivo .pyc y listo, normalmente este archivo se 
+genera en el directorio donde se usa el modulo de colorama, esto es que es muy probable que se genere en donde tengamos el archivo a 
+compilar llamado "Monitor1.py", en caso de compilarlo y que siga dando el mismo problema debemos hacer 
+una busqueda más profunda esto puede ser con:
+
+$ find . -name "*.pyc" -delete
+
+Finalmente para correr el programa solamente lo corremos con python3:
+
+$ python3 Monitor1.py 
