@@ -1,0 +1,5 @@
+El programa se corre de la siguiente manera:
+
+./a.out /ruta/que/quieres/recorre/
+
+
