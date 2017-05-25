@@ -100,9 +100,14 @@
   algunos de ellos no tanto.
 
 ### Afferny Ramírez
-* **Archivo:** [tarea2.jpg](./RamirezAfferny/tarea2.jpg)
-* **Calificación:** ?
-* **Comentarios:** Enviaste un archivo incorrecto :-P
+* **Archivo:** [Mapa.jpg](./RamirezAfferny/Mapa.jpg),
+  [Opiniones.txt](./RamirezAfferny/Opiniones.txt)
+* **Calificación:** 10
+* **Comentarios:**
+  * El comentario final que haces, _(...) sin duda me hizo reflexionar
+    sobre otros aspectos que jamás hubiera pensado que son válidos
+    dentro de este tema_, es lo más importante de la lectura. ¡Qué
+    bueno que haya sido así!
 
 ## Entregas extemporáneas (07.03.2017 < _t_ ≤ 14.03.2017)
 
@@ -135,5 +140,27 @@
   el ámbito de aplicación.
 
 ## Entregas _muy_ extemporáneas (14.03.2017 < _t_ ≤ 28.03.2017)
+
+### Antonio Arizmendi
+* **Archivo:** [](./)
+* **Calificación:** 10 × 0.5 = 5
+* **Comentarios:**
+  * Me parece curioso (aunque válido) que centres tu mapa mental en el
+    concepto de GPU
+  * De tu "antes": La totalidad de tareas a que haces referencia _es_
+    cubierta por los procesadores en general — Mediante la
+    programación que permite crear abstracciones, manipular
+    información compleja... Todo esto, convirtiéndola en grandes
+    cantidades de "simples" operaciones aritméticas
+  * Lástima que no entregaras antes la tarea ☹
+
+### Emilio Cabrera
+* **Archivo:** [](./)
+* **Calificación:** 10 × 0.5 = 5
+* **Comentarios:**
+  * ¡Vaya! Un análisis muy completo, tal vez yéndose más de lo que
+    quisiera por las ramas... Pero se ve que te hizo pensar ;-) ¡Bien!
+  * Lástima que no entregaras antes la tarea ☹
+
 
 ## Pasado el 28.03.2017, *no se recibe la tarea*
